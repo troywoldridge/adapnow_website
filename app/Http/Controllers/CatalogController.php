@@ -14,6 +14,6 @@ class CatalogController extends Controller
         $categories = Category::with('subcategories.products')->get();
         
         // Pass the categories data to the Blade view 'catalog'
-        return view('catalog', compact('categories'));
+        return view('catalog', compact('Products'));
     }
 }

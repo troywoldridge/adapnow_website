@@ -2,16 +2,28 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use DB;
+use App\Services\SinaliteService;
 
 class ProductHStandTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    protected $sinaliteService;
+
+    public function __construct(SinaliteService $sinaliteService)
     {
-        //
+        $this->sinaliteService = $sinaliteService;
+    }
+
+    public function run()
+    {
+        $hstands = $this->sinaliteService->getHStands();
+
+        foreach ($hstands as $hstand) {
+            DB::table('product_hstand')->updateOrInsert(
+                ['name' => $hstand['name']],
+                ['description' => $hstand['description'] ?? null]
+            );
+        }
     }
 }

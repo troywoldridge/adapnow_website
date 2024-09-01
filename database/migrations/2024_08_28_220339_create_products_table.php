@@ -20,10 +20,12 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->decimal('price', 8, 2);
             $table->unsignedBigInteger('category_id');
+	    $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->timestamps();
 
             // Foreign key to link to categories table
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+	    $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('set null');
         });
     }
 

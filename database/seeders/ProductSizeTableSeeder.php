@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use DB;
 use App\Services\SinaliteService;
 
 class ProductSizeTableSeeder extends Seeder
@@ -17,17 +17,13 @@ class ProductSizeTableSeeder extends Seeder
 
     public function run()
     {
-        $products = \App\Models\Product::all();
+        $sizes = $this->sinaliteService->getSizes();
 
-        foreach ($products as $product) {
-            $sizes = $this->sinaliteService->getSizes($product->id, 'en_ca'); // Adjust storeCode as necessary
-
-            foreach ($sizes as $size) {
-                DB::table('product_sizes')->insert([
-                    'product_id' => $product->id,
-                    'size' => $size['name'],
-                ]);
-            }
+        foreach ($sizes as $size) {
+            DB::table('product_size')->updateOrInsert(
+                ['name' => $size['name']],
+                ['description' => $size['description'] ?? null]
+            );
         }
     }
 }

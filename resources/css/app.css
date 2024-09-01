@@ -1,0 +1,12 @@
+/* Ensure dropdown items are visible */
+.dropdown-item {
+    color: #000 !important; /* Force the text color to black */
+    background-color: #fff !important; /* Force the background color to white */
+    padding: 10px 20px; /* Add some padding for spacing */
+}
+
+/* Change the background color on hover for better visibility */
+.dropdown-item:hover {
+    background-color: #f8f9fa !important; /* Light gray background on hover */
+    color: #000 !important; /* Ensure the text stays black */
+}

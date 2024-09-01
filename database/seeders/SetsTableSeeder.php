@@ -9,11 +9,9 @@ class SetsTableSeeder extends Seeder
 {
     public function run()
     {
-        $sets = [
-            ['name' => 'Single Set'],
-            ['name' => 'Multiple Sets'],
-        ];
-
-        DB::table('sets')->insert($sets);
+        DB::table('sets')->insert([
+            ['name' => 'Single Set', 'quantity' => 1],
+            ['name' => 'Multiple Sets', 'quantity' => 2],
+        ]);
     }
 }

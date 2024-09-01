@@ -36,7 +36,7 @@ class Product extends Model
     // Relationship with HStand
     public function hstands()
     {
-        return $this->belongsToMany(HStand::class, 'product_hstand');
+        return $this->belongsToMany(HStand::class, 'product_hstand');                                                         
     }
 
     // Relationship with Coating
@@ -62,9 +62,16 @@ class Product extends Model
     {
         return $this->belongsToMany(Compatibility::class, 'product_compatibility');
     }
-public function subcategory()
-{
-    return $this->belongsTo(Subcategory::class);
-}
 
+    // Relationship with Subcategory
+    public function subcategory()
+    {
+        return $this->belongsTo(Subcategory::class);
+    }
+
+    // Relationship with Category (Add this if you have a Category model)
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

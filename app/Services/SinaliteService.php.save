@@ -1,0 +1,183 @@
+<?php
+
+namespace App\Services;
+
+use GuzzleHttp\Client;
+use Exception;
+
+class SinaliteService
+{
+    protected $client;
+    protected $token;
+
+    public function __construct()
+    {
+        $this->client = new Client();
+        $this->authenticate();
+    }
+
+    protected function authenticate()
+    {
+        try {
+            $response = $this->client->post('https://api.sinaliteuppy.com/auth/token', [
+                'json' => [
+                    'client_id' => 'JarBGsyG2zC4vRFTjLEi4TDbQrXUVEzr',
+                    'client_secret' => 'L292AtithgbZWAuo4UZcQXdG0s7I-TJphyaWCJKA95YpURyZGH1Qh3Ri-YauVdkJ',
+                    'audience' => 'https://apiconnect.sinalite.com',
+                    'grant_type' => 'client_credentials',
+                ],
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                ],
+            ]);
+
+            $responseBody = json_decode($response->getBody(), true);
+
+            if (!isset($responseBody['access_token'])) {
+                throw new Exception("Authentication failed: access_token not found in response. Response: " . print_r($responseBody, true));
+            }
+
+            // If token_type is not set, default to 'Bearer'
+            $tokenType = isset($responseBody['token_type']) ? $responseBody['token_type'] : 'Bearer';
+
+            $this->token = $tokenType . ' ' . $responseBody['access_token'];
+        } catch (Exception $e) {
+            throw new Exception("Authentication failed: " . $e->getMessage());
+        }
+    }
+
+    public function getProducts()
+    {
+        try {
+            $response = $this->client->get('https://api.sinaliteuppy.com/product', [
+                'headers' => [
+                    'Authorization' => $this->token,
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (Exception $e) {
+            throw new Exception("Failed to retrieve products: " . $e->getMessage());
+        }
+    }
+
+    public function getProductById($id)
+    {
+        try {
+            $response = $this->client->get("https://api.sinaliteuppy.com/product/{$id}/9", [
+                'headers' => [
+                    'Authorization' => $this->token,
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (Exception $e) {
+            throw new Exception("Failed to retrieve product by ID: " . $e->getMessage());
+        }
+    }
+
+    public function getProductPricing($id, $options)
+    {
+        try {
+            $response = $this->client->post("https://api.sinaliteuppy.com/price/{$id}/9", [
+                'headers' => [
+                    'Authorization' => $this->token,
+                ],
+                'json' => [
+                    'productOptions' => $options,
+                ],
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (Exception $e) {
+            throw new Exception("Failed to retrieve product pricing: " . $e->getMessage());
+        }
+    }
+
+    public function placeOrder($orderData)
+    {
+        try {
+            $response = $this->client->post('https://api.sinaliteuppy.com/order/new', [
+                'headers' => [
+                    'Authorization' => $this->token,
+                ],
+                'json' => $orderData,
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (Exception $e) {
+            throw new Exception("Failed to place order: " . $e->getMessage());
+        }
+    }
+
+        return $this->makeRequest('GET', 'https://api.sinaliteuppy.com/product');
+    }
+
+    // Method to get product details by ID
+    public function getProductById($id)
+    {
+        return $this->makeRequest('GET', "https://api.sinaliteuppy.com/product/{$id}");
+    }
+
+    // Method to get detailed product information including options and pricing
+    public function getProductDetails($id, $storeCode)
+    {
+        return $this->makeRequest('GET', "https://api.sinaliteuppy.com/product/{$id}/{$storeCode}");
+    }
+
+    // Method to get available sets
+    public function getSets()
+    {
+        return $this->makeRequest('GET', 'https://liveapi.sinalite.com/sets');
+    }
+
+    // Method to get available variants for a product
+    public function getVariants($id, $offset = 0)
+    {
+        return $this->makeRequest('GET', "https://api.sinaliteuppy.com/variants/{$id}/{$offset}");
+    }
+
+    // Method to get price for a specific variant by key
+    public function getPriceByKey($id, $key)
+    {
+        return $this->makeRequest('GET', "https://api.sinaliteuppy.com/pricebykey/{$id}/{$key}");
+    }
+
+    // Method to get pricing for a product based on selected options
+    public function getPrice($id, $storeCode, array $options)
+    {
+        return $this->makeRequest('POST', "https://api.sinaliteuppy.com/price/{$id}/{$storeCode}", [
+            'json' => [
+                'productOptions' => $options,
+            ],
+        ]);
+    }
+
+    // Method to place a new order
+    public function placeOrder(array $orderData)
+    {
+        return $this->makeRequest('POST', 'https://liveapi.sinalite.com/order/new', [
+            'json' => $orderData,
+        ]);
+    }
+
+    // Method to get shipping estimates
+    public function getShippingEstimate(array $orderData)
+    {
+        return $this->makeRequest('POST', 'https://liveapi.sinalite.com/order/shippingEstimate', [
+            'json' => $orderData,
+        ]);
+    }
+
+    // Method to check the status of orders
+    public function getOrders($offset = 0)
+    {
+        return $this->makeRequest('GET', "https://liveapi.sinalite.com/order/list/{$offset}");
+    }
+
+    // Method to get details for a specific order by ID
+    public function getOrderById($id)
+    {
+        return $this->makeRequest('GET', "https://liveapi.sinalite.com/order/{$id}");
+    }
+}

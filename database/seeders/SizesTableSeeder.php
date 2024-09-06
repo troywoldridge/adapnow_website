@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Services\SinaliteService;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

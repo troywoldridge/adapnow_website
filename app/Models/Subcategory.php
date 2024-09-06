@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subcategory extends Model
 {
+    // Mass assignment protection
+    protected $fillable = ['name', 'category_id'];  // Adjust according to your subcategory table fields
+
     // Define the relationship to the Product model
     public function products()
     {

@@ -9,6 +9,7 @@ class ProductSize extends Model
 {
     use HasFactory;
 
+    // Mass assignment protection
     protected $fillable = ['product_id', 'size'];
 
     public function product()

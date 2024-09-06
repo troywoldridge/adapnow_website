@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use App\Services\SinaliteService;
+use Exception;
 class CoatingsTableSeeder extends Seeder
 {
     public function run()

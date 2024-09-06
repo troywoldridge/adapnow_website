@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Services\SinaliteService;
 
 class ProductSizeTableSeeder extends Seeder
@@ -20,7 +20,7 @@ class ProductSizeTableSeeder extends Seeder
         $sizes = $this->sinaliteService->getSizes();
 
         foreach ($sizes as $size) {
-            DB::table('product_size')->updateOrInsert(
+            DB::table('product_sizes')->updateOrInsert(
                 ['name' => $size['name']],
                 ['description' => $size['description'] ?? null]
             );

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateProductCompatibilityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('product_compatibility', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description')->nullable(); // Add this line for the description column
             $table->timestamps();
         });
     }
@@ -24,4 +26,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('product_compatibility');
     }
-};
+}
+

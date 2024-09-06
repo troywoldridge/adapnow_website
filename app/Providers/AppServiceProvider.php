@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\SinaliteService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +12,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Binding the SinaliteService in the container
+        $this->app->singleton(SinaliteService::class, function ($app) {
+            return new SinaliteService();
+        });
     }
 
     /**

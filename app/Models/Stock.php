@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Stock extends Model
 {
     use HasFactory;
+
+    // Mass assignment protection
+    protected $fillable = ['name'];  // Adjust according to your stock table fields
 }

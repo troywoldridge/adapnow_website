@@ -2,123 +2,139 @@
 
 namespace App\Services;
 
-use GuzzleHttp\Client;
 use Exception;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class SinaliteService
 {
-    protected $client;
-    protected $token;
+    protected $accessToken;
+    
+    // Base URLs for Sandbox and Production
+    protected $sandboxBaseUrl = 'https://api.sinaliteuppy.com';
+    protected $liveBaseUrl = 'https://liveapi.sinalite.com';
 
     public function __construct()
     {
-        $this->client = new Client();
-        $this->authenticate();
+        // Automatically generate a token when the service is initialized
+        $this->accessToken = $this->generateToken();
     }
 
-    protected function authenticate()
+    /**
+     * Generate access token for authentication.
+     * 
+     * @throws Exception
+     * @return string
+     */
+    public function generateToken()
     {
         try {
-            $response = $this->client->post('https://api.sinaliteuppy.com/auth/token', [
-                'json' => [
-                    'client_id' => 'JarBGsyG2zC4vRFTjLEi4TDbQrXUVEzr',
-                    'client_secret' => 'L292AtithgbZWAuo4UZcQXdG0s7I-TJphyaWCJKA95YpURyZGH1Qh3Ri-YauVdkJ',
-                    'audience' => 'https://apiconnect.sinalite.com',
-                    'grant_type' => 'client_credentials',
-                ],
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                ],
+            $response = Http::post($this->sandboxBaseUrl . '/auth/token', [
+                'client_id' => 'JarBGsyG2zC4vRFTjLEi4TDbQrXUVEzr',
+                'client_secret' => 'L292AtithgbZWAuo4UZcQXdG0s7I-TJphyaWCJKA95YpURyZGH1Qh3Ri-YauVdkJ',
+                'audience' => 'https://apiconnect.sinalite.com',
+                'grant_type' => 'client_credentials'
             ]);
 
-            $responseBody = json_decode($response->getBody(), true);
+            $responseData = $response->json();
 
-            if (!isset($responseBody['access_token'])) {
-                throw new Exception("Authentication failed: access_token not found in response. Response: " . print_r($responseBody, true));
+            // Log the full response for inspection
+            Log::info("Token API Response: " . json_encode($responseData));
+
+            // Handle missing access token or token type
+            if (!isset($responseData['access_token'])) {
+                throw new Exception("Missing access token. Full response: " . json_encode($responseData));
             }
 
-            $tokenType = isset($responseBody['token_type']) ? $responseBody['token_type'] : 'Bearer';
-            $this->token = $tokenType . ' ' . $responseBody['access_token'];
+            // Use 'Bearer' as token type if it is not present in the response
+            $tokenType = isset($responseData['token_type']) ? $responseData['token_type'] : 'Bearer';
+            $token = $tokenType . ' ' . $responseData['access_token'];
+
+            return $token;
         } catch (Exception $e) {
-            throw new Exception("Authentication failed: " . $e->getMessage());
+            Log::error("Error generating token: " . $e->getMessage());
+            throw new Exception("Error generating token: " . $e->getMessage());
         }
     }
 
-    protected function makeRequest($method, $url, $options = [])
+    /**
+     * Make a generic request to the Sinalite API.
+     *
+     * @param string $method HTTP Method (GET, POST)
+     * @param string $url API endpoint URL
+     * @param array $data Payload for POST requests
+     * @return array API response
+     * @throws Exception
+     */
+    protected function makeRequest($method, $url, $data = [])
     {
         try {
-            $response = $this->client->request($method, $url, array_merge([
-                'headers' => [
-                    'Authorization' => $this->token,
-                ],
-            ], $options));
+            $response = Http::withHeaders([
+                'Authorization' => $this->accessToken,
+                'Content-Type' => 'application/json',
+            ])->{$method}($url, $data);
 
-            return json_decode($response->getBody(), true);
+            if ($response->failed()) {
+                throw new Exception("API request failed: " . $response->body());
+            }
+
+            return $response->json();
         } catch (Exception $e) {
-            throw new Exception("Request failed: " . $e->getMessage());
+            Log::error("Failed to retrieve data: " . $e->getMessage());
+            throw new Exception("Failed to retrieve data: " . $e->getMessage());
         }
     }
 
+    /**
+     * Get the list of products.
+     *
+     * @throws Exception
+     * @return array
+     */
     public function getProducts()
     {
-        return $this->makeRequest('GET', 'https://api.sinaliteuppy.com/product');
+        $url = $this->sandboxBaseUrl . '/product';
+        return $this->makeRequest('get', $url);
     }
 
-    public function getProductById($id)
+    /**
+     * Get specific product data by ID.
+     *
+     * @param int $productId
+     * @param string $storeCode
+     * @return array
+     */
+    public function getProductById($productId, $storeCode = 'en_us')
     {
-        return $this->makeRequest('GET', "https://api.sinaliteuppy.com/product/{$id}/9");
+        $url = $this->sandboxBaseUrl . "/product/{$productId}/{$storeCode}";
+        return $this->makeRequest('get', $url);
     }
 
-    public function getProductDetails($id, $storeCode)
+    /**
+     * Get product stock data.
+     *
+     * @throws Exception
+     * @return array
+     */
+    public function getStocks()
     {
-        return $this->makeRequest('GET', "https://api.sinaliteuppy.com/product/{$id}/{$storeCode}");
+        $url = $this->sandboxBaseUrl . '/v1/stocks';  // Update this if incorrect
+        return $this->makeRequest('get', $url);
     }
 
-    public function getProductPricing($id, $options)
+    /**
+     * Get pricing for a product variant.
+     *
+     * @param int $productId
+     * @param array $options
+     * @param string $storeCode
+     * @return array
+     */
+    public function getPricing($productId, $options, $storeCode = 'en_us')
     {
-        return $this->makeRequest('POST', "https://api.sinaliteuppy.com/price/{$id}/9", [
-            'json' => [
-                'productOptions' => $options,
-            ],
-        ]);
+        $url = $this->sandboxBaseUrl . "/price/{$productId}/{$storeCode}";
+        return $this->makeRequest('post', $url, ['productOptions' => $options]);
     }
 
-    public function getSets()
-    {
-        return $this->makeRequest('GET', 'https://liveapi.sinalite.com/sets');
-    }
-
-    public function getVariants($id, $offset = 0)
-    {
-        return $this->makeRequest('GET', "https://api.sinaliteuppy.com/variants/{$id}/{$offset}");
-    }
-
-    public function getPriceByKey($id, $key)
-    {
-        return $this->makeRequest('GET', "https://api.sinaliteuppy.com/pricebykey/{$id}/{$key}");
-    }
-
-    public function placeOrder(array $orderData)
-    {
-        return $this->makeRequest('POST', 'https://liveapi.sinalite.com/order/new', [
-            'json' => $orderData,
-        ]);
-    }
-
-    public function getShippingEstimate(array $orderData)
-    {
-        return $this->makeRequest('POST', 'https://liveapi.sinalite.com/order/shippingEstimate', [
-            'json' => $orderData,
-        ]);
-    }
-
-    public function getOrders($offset = 0)
-    {
-        return $this->makeRequest('GET', "https://liveapi.sinalite.com/order/list/{$offset}");
-    }
-
-    public function getOrderById($id)
-    {
-        return $this->makeRequest('GET', "https://liveapi.sinalite.com/order/{$id}");
-    }
+    // Additional methods for placing orders, getting shipping estimates, etc., can be added here.
 }

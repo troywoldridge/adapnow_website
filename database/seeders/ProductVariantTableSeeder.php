@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Services\SinaliteService;
 
 class ProductVariantTableSeeder extends Seeder
@@ -22,8 +22,9 @@ class ProductVariantTableSeeder extends Seeder
         foreach ($variants as $variant) {
             DB::table('product_variant')->updateOrInsert(
                 ['key' => $variant['key']],
-                ['price' => $variant['price']]
+                ['price' => $variant['price'] ?? null]
             );
         }
     }
 }
+

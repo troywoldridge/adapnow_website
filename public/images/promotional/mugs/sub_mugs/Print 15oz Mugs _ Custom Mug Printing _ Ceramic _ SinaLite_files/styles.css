@@ -1,0 +1,358 @@
+.block-credit-balance .actions {
+    display: block;
+    float: right;
+}
+.text-center {
+    text-align: center;
+}
+.lof_storecredit_slider .ui-slider-handle {
+    background: url(../images/sprite-skin-nice.png) no-repeat 0 -90px;
+    height: 22px;
+    width: 22px;
+    margin-top: -16px;
+}
+.lof_storecredit_slider .ui-slider-handle:hover {
+    background-position: 0 -120px;
+}
+.lof_storecredit_slider .ui-slider-range-min {
+    display: block;
+    height: 100%;
+    background-color: #99a4ac;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+.lof_storecredit_slider {
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+.lof_storecredit_slider:before, .lof_storecredit_slider:after {
+    display: block;
+    position: absolute;
+    margin-top: 12px;
+    font-size: 12px;
+}
+.lof_storecredit_slider:before {
+    content: attr(data-content-min);
+    left: 0;
+}
+.lof_storecredit_slider:after {
+    content: attr(data-content-max);
+    right: 0;
+}
+.credit-balance {
+    color: #ff396f;
+}
+.amount-add {
+    color: #008d4d;
+}
+.amount-add, .amount-subtract, .credit-balance {
+    font-weight: bold;
+}
+.amount-subtract {
+    color: #bc4031;
+}
+@media screen and (min-width: 768px) {
+    .block-credit-friend fieldset.general .field.email {
+        width: 50%;
+    }
+    .block-credit-friend fieldset.general .field.amount {
+    width: 50%;
+    }
+    .block-credit-friend fieldset.general .field.email,
+    .block-credit-friend fieldset.general .field.amount {
+        float: left;
+        padding-left: 1rem;
+        box-sizing: border-box;
+    }
+}
+@media (max-width: 1024px) {
+    .block.block-credit-friend, .block.block-redeem-credit, .block.block-history, .block.block-credit-balance, .add-balance-area.pt-4.actions, .block.block-credit-transactions {
+        padding: 10px;
+    }
+}
+
+.widget-storecredit-products .x_panel, .widget-storecredit-products .x_title {
+    margin-bottom: 10px;
+}
+.widget-storecredit-products .x_panel {
+    width: 100%;
+    padding: 10px 10px;
+    display: inline-block;
+    background: #fff;
+    border: 0px solid #E6E9ED;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    opacity: 1;
+    transition: all .2s ease;
+}
+.widget-storecredit-products .x_title {
+    border-bottom: 2px solid #E6E9ED;
+    padding: 1px 5px 6px;
+}
+.widget-storecredit-products .x_title h2 {
+    margin: 5px 0 6px;
+    float: left;
+    display: block;
+}
+.widget-storecredit-products .x_content {
+    float: inherit;
+    clear: initial;
+    margin-top: 0px;
+}
+.widget-storecredit-products .pricing {
+    background: #fff;
+    box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.1);
+}
+.widget-storecredit-products .pricing .title {
+    background: #11A44C;
+    height: 110px;
+    color: #fff;
+    padding: 15px 0 0;
+    text-align: center;
+    margin-bottom: 0px;
+    border-radius: 20px 20px 0 0;
+}
+.widget-storecredit-products .pricing .title h2 {
+    text-transform: capitalize;
+    font-size: 18px;
+    border-radius: 5px 5px 0 0;
+    margin: 0;
+    font-weight: 400;
+}
+.widget-storecredit-products .pricing .title h1 {
+    font-size: 30px;
+    margin: 12px;
+}
+
+.widget-storecredit-products .pricing_footer {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    overflow: hidden;
+}
+.widget-storecredit-products .pricing_features {
+    background: #FAFAFA;
+    padding: 20px 15px;
+    min-height: 230px;
+    font-size: 13.5px;
+}
+.widget-storecredit-products .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+.widget-storecredit-products .pricing_features ul li {
+    margin-top: 10px;
+}
+
+.widget-storecredit-products .x_content,.widget-storecredit-products  table.tile td ul li a,.widget-storecredit-products  table.tile_info {
+    width: 100%;
+}
+.widget-storecredit-products .text-success {
+    color: #3c763d;
+}
+.widget-storecredit-products .pricing_footer select {
+	margin-bottom: 10px;
+}
+.widget-storecredit-products .ui-ribbon-container {
+    position: relative;
+}
+.widget-storecredit-products .ui-ribbon-container .ui-ribbon-wrapper {
+    position: absolute;
+    overflow: hidden;
+    width: 85px;
+    height: 88px;
+    top: -3px;
+    right: -3px;
+}
+.widget-storecredit-products .ui-ribbon-container .ui-ribbon {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    transform: rotate(45deg);
+    padding: 7px 0;
+    left: -5px;
+    top: 15px;
+    width: 120px;
+    line-height: 20px;
+    background-color: #555;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+.widget-storecredit-products .ui-ribbon-container .ui-ribbon:before {
+    left: 0;
+    bottom: -1px;
+    right: 0;
+}
+
+.widget-storecredit-products .ui-ribbon-container .ui-ribbon:after, .widget-storecredit-products .ui-ribbon-container .ui-ribbon:before {
+    position: absolute;
+    content: " ";
+    line-height: 0;
+    border-top: 2px solid #555;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+}
+.widget-storecredit-products .ui-ribbon-container .ui-ribbon:after, .widget-storecredit-products .ui-ribbon-container .ui-ribbon:before {
+    position: absolute;
+    content: " ";
+    line-height: 0;
+    border-top: 2px solid #555;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+}
+.block.block-history {
+    margin-top: 20px;
+}
+.ba-balance-inner {
+    box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    position: relative;
+    border-radius: 50px;
+    padding: 11px 25px 0 80px;
+    display: block;
+    overflow: hidden;
+    height: 80px;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+.ba-balance-inner h5 {
+    font-size: 15px;
+    margin-bottom: 0;
+}
+.ba-balance-inner .title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    margin-top: 0px;
+}
+.ba-balance-inner .amount {
+    color: #0D9B46;
+    font-size: 14px;
+    font-weight: 700;
+}
+.ba-add-balance-title {
+    box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 60px;
+    display: block;
+    overflow: hidden;
+    padding-left: 25px;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+.ba-add-balance-title:hover {
+    background: #1b8f49;
+    color: #fff;
+}
+.ba-add-balance-title:hover a {
+    color: #fff;
+}
+.ba-add-balance-title h5 {
+    margin-bottom: 0;
+    float: left;
+    padding-top: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+.ba-add-balance-title i {
+    color: #fff;
+    float: right;
+    background: #11A44C;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 20px;
+}
+.ba-balance-inner .icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #11A44C;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    line-height: 80px;
+    display: inline-block;
+    text-align: center;
+}
+.ba-single-history {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background: #fff;
+    -webkit-box-shadow: 0px 15px 15px #F1F4F5;
+    box-shadow: 0px 15px 15px #F1F4F5;
+}
+.ba-single-history h5 {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+.ba-single-history h6 {
+    font-size: 16px;
+    font-weight: 600;
+}
+.ba-single-history-one h5 {
+    color: #11A44C;
+}
+.ba-single-history-two h5 {
+    color: #ff396f;
+}
+.ba-single-history-three h5 {
+    color: #7c00cf;
+}
+.ba-single-history-four h5 {
+    color: #11A44C;
+}
+.align-self-center {
+    align-self: center !important;
+}
+.text-end {
+    text-align: right !important;
+}
+.block-history .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+}
+.block-history .row .col-6 {
+    width: 50%;
+    flex: 0 0 auto;
+    padding-right: 7px;
+    padding-left: 7px;
+    max-width: 100%
+}
+.ba-balance-inner .icon img {
+    vertical-align: middle;
+}
+.account .block-credit-transactions .table-wrapper, form#form-redeemcredit,form#form-send2friend {
+    box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+.credit-product-item {
+    margin-top: 10px;
+}
+.widget-storecredit-products .price-container .price {
+    font-size: 1em;
+    font-weight: 600;
+}

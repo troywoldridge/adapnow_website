@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -12,7 +12,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 class CatalogController extends BaseController
 
-{ 
+{
     protected $sinaliteService;
 
     public function __construct(SinaliteService $sinaliteService)

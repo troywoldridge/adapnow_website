@@ -1,0 +1,372 @@
+/* CSS Document */
+#mailcotentarea,#mailcotentarea2 {
+	align-items: baseline;
+	background: rgba(0, 0, 0, 0.85) none repeat scroll 0 0;
+	bottom: 0;
+	display: none;
+	height: 100%;
+	justify-content: center;
+	left: 0;
+	overflow: auto;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 15001;
+}
+#mailcotentarea #maincontent {
+	background-color: white;
+	margin: 50px auto 0;
+	max-width: 100%;
+	padding: 10px 20px;
+	width: 30%;
+	min-width: 320px;
+}
+#mailcotentarea #maincontent #closesection {
+	text-align: right;
+}
+#mailcotentarea #maincontent #closebtndiv {
+	background: url("../images/close.png") no-repeat scroll 0 0;
+	cursor: pointer;
+	height: 42px;
+	width: 42px;
+	display: inline-block;
+	float: right;
+}
+#mailcotentarea #maincontent .page-title h1 {
+	margin-top: 8px;
+}
+#mailcotentarea #maincontent .fieldset ul li textarea {
+	width: 100%;
+}
+#mailcotentarea #maincontent .fieldset img {
+	display: inline;
+	visibility: hidden;
+}
+
+
+#mailcotentarea2 #maincontent2 {
+    background-color: white;
+    margin: 50px auto 0;
+    max-width: 100%;
+    padding: 10px 20px;
+    width: 30%;
+    min-width: 320px;
+}
+#mailcotentarea2 #maincontent2 #closesection2 {
+    text-align: right;
+}
+#mailcotentarea2 #maincontent2 #closebtndiv2 {
+    background: url("../images/close.png") no-repeat scroll 0 0;
+    cursor: pointer;
+    height: 42px;
+    width: 42px;
+    display: inline-block;
+    float: right;
+}
+#mailcotentarea2 #maincontent2 .page-title h1 {
+    margin-top: 8px;
+}
+#mailcotentarea2 #maincontent2 .fieldset ul li textarea {
+    width: 100%;
+}
+#mailcotentarea2 #maincontent2 .fieldset img {
+    display: inline;
+    visibility: hidden;
+}
+
+
+
+
+.status{
+	color:white;
+	padding:10px;
+	border-radius: 9px;
+	text-align: center;
+
+}
+.sent{
+	background-color:#FF8804;
+}
+.clicked{
+	background-color:#16B769;
+}
+.orderd{
+	background-color:#a5a8bb
+}
+#quote-table tr td,#quote-table tr th {
+	border: 1px solid #e0e0e0;
+}
+#quote-table tr th{
+	text-align: center;
+}
+.td-comment {
+	width: 40%;
+}
+.td-sku {
+	width: 20%;
+}
+.td-status {
+	width: 10%;
+	text-align: center;
+}
+.td-total {
+	width: 10%;
+}
+.not-quote{
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+
+}
+#customername-error , #customeremail-error , #telephone-error , #comment-error, #state-error, #city-error, #zipcode-error, #firstname-error , #lastname-error
+{
+	color: red !important;
+}
+
+#customername-error2 , #customeremail-error2 , #telephone-error2 , #comment-error2, #state-error2, #city-error2, #zipcode-error2, #firstname-error2 , #lastname-error2
+{
+    color: red !important;
+}
+
+.custom-shipping-form{
+	margin: 0 0 20px 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+.shipping-details .field {
+    width: 50%;
+    float: left;
+    display: inline-block;
+    margin: 0 0 20px 0;
+}
+.shipping-details .field .label {
+    margin-bottom: 4px;
+    display: inline-block;
+    font-weight: 600;
+}
+.shipping-details .field:nth-child(2n+2) .label {
+    padding: 0 0 0 10px;
+}
+.shipping-details .field:nth-child(2n+2) .control {
+    margin: 0 0 0 10px;
+}
+.shipping-details .field:nth-child(2n+1) .control {
+    margin: 0 15px 0 0;
+}
+.shipping-details .field.required>.label:after{
+    content: '*';
+    color: #e02b27;
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+}
+.page-wrapper .action.custom-quote-btn{
+    background: #1F9F71;
+    border-color: #1F9F71;
+    border-radius: 10px;
+}
+.page-wrapper .action.custom-quote-btn.checkout-summary-buttons{
+    margin: 15px;
+}
+tbody.cart.item td.col.item .product-item-details div:first-child {
+    color: #69696B !important;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 0 !important;
+}
+tbody.cart.item td.col.item .product-item-details div strong {
+    font-size: 14px;
+}
+tbody.cart.item td.col.item .product-item-details dl.item-options dt {
+    max-width: 50%;
+    display: block;
+    float: left;
+    font-size: 13px;
+    padding-right: 30px;
+    position: relative;
+}
+tbody.cart.item td.col.item .product-item-details dl.item-options dt::after {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    content: '-';
+}
+tbody.cart.item td.col.item .product-item-details dl.item-options dd {
+    width: auto;
+    display: block;
+    font-size: 13px;
+}
+#shopping-cart-table .item-price-update input {
+    max-width: 320px;
+}
+#quote-table tr th {
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+}
+#quote-table tr th:first-child {
+    border-top-left-radius: 10px;
+}
+#quote-table tr th:last-child {
+    border-top-right-radius: 10px;
+}
+#quote-table tr td {
+    vertical-align: middle;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 600;
+    padding: 30px 10px;
+}
+
+
+#quote-table tr  td.td-quoteid {
+    width: 10%;
+}
+#quote-table tr  td.td-name {
+    width: 15%;
+}
+#quote-table tr td.td-email {
+    width: 25%;
+    text-align: left;
+}
+#quote-table tr td.td-total {
+    width: 10%;
+}
+#quote-table tr td.td-status {
+    width: 20%;
+}
+#quote-table tr td.td-comment {
+    width: 20%;
+}
+#quote-table tr td.td-comment a:first-child {
+    margin-right: 5px;
+}
+#quote-table tr td.td-comment a {
+    color: #177654;
+    font-weight: 500;
+}
+.account #productForm .additional-fields {
+    display: flex;
+    gap: 20px;
+}
+.account #productForm .additional-fields div {
+    width: 50%;
+}
+.account #productForm .additional-fields div input {
+    border: 1px solid #949494;
+    border-radius: 3px;
+    color: black;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+.account .product_content #fileuploader .ajax-upload-dragdrop {
+    width: 100% !important;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+	border: dashed 2px #808080;
+}
+.account .product_content #fileuploader .ajax-upload-dragdrop .ajax-file-upload {
+    width: 100px;
+    order: 2;
+    margin-top: 10px;
+}
+.account .product_content #fileuploader .ajax-upload-dragdrop span b {
+    color: #000;
+}
+.account .product_content .actions button#product-addtoquote-button {
+    width: 100%;
+    padding: 16px;
+    height: auto;
+    margin-top: 40px;
+    border-radius: 6px;
+    background: #1F9F71;
+    border-color: #1F9F71;
+}
+.account .product_content hr {
+    background: transparent;
+}
+.account #productForm .additional-fields {
+    display: flex;
+    gap: 20px;
+}
+.account #productForm .additional-fields div {
+    width: 50%;
+}
+.account #productForm .additional-fields div input {
+    border: 1px solid #949494;
+    border-radius: 3px;
+    color: black;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+.account .product_content #fileuploader .ajax-upload-dragdrop {
+    width: 100% !important;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+	border: dashed 2px #808080;
+}
+.account .product_content #fileuploader .ajax-upload-dragdrop .ajax-file-upload {
+    width: 100px;
+    order: 2;
+    margin-top: 10px;
+}
+.account .product_content #fileuploader .ajax-upload-dragdrop span b {
+    color: #000;
+}
+.account .product_content .actions button#product-addtoquote-button {
+    width: 100%;
+    padding: 16px;
+    height: auto;
+    margin-top: 40px;
+    border-radius: 6px;
+    background: #1F9F71;
+    border-color: #1F9F71;
+}
+.account .product_content hr {
+    background: transparent;
+}
+.account .column.main.product_content {
+    padding-bottom: 50px;
+}
+@media only screen and (max-width: 767px) {
+tbody.cart.item td.col.item .product-item-details dl.item-options dt::after{
+  display:none;
+}
+tbody.cart.item td.col.item .product-item-details dl.item-options dt ,
+tbody.cart.item td.col.item .product-item-details dl.item-options dd{
+  width: 100%;
+      float: none;
+}
+#shopping-cart-table .item-price-update input {
+    max-width: 260px;
+}
+.account table#quote-table{
+      overflow-x: scroll;
+    display: block;
+}
+.account #quote-table tr td {
+    font-size: 10px;
+    font-weight: 400;
+    padding: 10px;
+}
+.account #quote-table tr th{
+   font-size: 12px;
+}
+.account #productForm .additional-fields div {
+    width: 100%;
+}
+.account #productForm .additional-fields {
+    display: block;
+}
+}

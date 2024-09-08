@@ -6,24 +6,24 @@
     <p>Professional services for Custom Business Card Printing and Personalized Cards. We are your trusted printing services provider.</p>
 
     <div class="row">
-        <!-- First Card -->
+        <!-- First Card: Best Value -->
         <div class="col-md-4 mb-4">
             <a href="{{ url('/business-cards/profit-maximizer') }}">
-                <img src="{{ asset('images/business_cards/18pt_Gloss_lam/gloss-laminated-business-cards.png') }}" class="card-img-top" alt="Profit Maximizer 14pt Gloss Business Card">
+                <img src="{{ asset('images/business_cards/bc-best-value.png') }}" class="card-img-top" alt="Best Value Business Card">
             </a>
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Best Value Business Cards</h5>
                     <p class="card-text">These Wholesale Business Cards offer the best value for your money. If you are looking for the most cost-effective option or the quickest turnaround.</p>
-                    <a href="{{ url('/business-cards/profit-maximizer') }}" class="btn btn-primary">14pt Profit Maximizer</a>
+                    <a href="{{ url('/business-cards/profit-maximizer') }}" class="btn btn-primary">Best Value</a>
                 </div>
             </div>
         </div>
 
-        <!-- Second Card -->
+        <!-- Second Card: Matte 14pt -->
         <div class="col-md-4 mb-4">
             <a href="{{ url('/business-cards/matte-14pt') }}">
-                <img src="{{ asset('images/business_cards/14pt_matte/matte-business-cards.png') }}" class="card-img-top" alt="14pt Matte Business Card">
+                <img src="{{ asset('images/business_cards/matte-business-cards.png') }}" class="card-img-top" alt="Matte 14pt Business Cards">
             </a>
             <div class="card">
                 <div class="card-body">
@@ -35,10 +35,10 @@
             </div>
         </div>
 
-        <!-- Third Card -->
+        <!-- Third Card: UV Business Cards -->
         <div class="col-md-4 mb-4">
             <a href="{{ url('/business-cards/uv-quick-ship') }}">
-                <img src="{{ asset('images/business_cards/14pt_UV_HG/quick-ship-bc.png') }}" class="card-img-top" alt="14pt Matte Business Card">
+                <img src="{{ asset('images/business_cards/bc-gloss-uv-business-cards.png') }}" class="card-img-top" alt="UV Business Card">
             </a>
             <div class="card">
                 <div class="card-body">
@@ -51,10 +51,10 @@
             </div>
         </div>
 
-        <!-- Fourth Card -->
+        <!-- Fourth Card: Gloss Lamination 18pt -->
         <div class="col-md-4 mb-4">
             <a href="{{ url('/business-cards/gloss-lamination-18pt') }}">
-                <img src="{{ asset('images/business_cards/18pt_Gloss_lam/gloss-laminated-business-cards.png') }}" class="card-img-top" alt="14pt Gloss Laminated Business Card">
+                <img src="{{ asset('images/business_cards/gloss-laminated-business-cards.png') }}" class="card-img-top" alt="18pt Gloss Laminated Business Card">
             </a>
             <div class="card">
                 <div class="card-body">
@@ -66,10 +66,10 @@
             </div>
         </div>
 
-        <!-- Fifth Card -->
+        <!-- Fifth Card: AQ Business Cards -->
         <div class="col-md-4 mb-4">
             <a href="{{ url('/business-cards/aq-14pt') }}">
-                <img src="{{ asset('images/business_cards/14pt_matte/bc-aq.png') }}" class="card-img-top" alt="14pt AQ Semi Gloss Business Card">
+                <img src="{{ asset('images/business_cards/bc-aq.png') }}" class="card-img-top" alt="14pt AQ Semi Gloss Business Card">
             </a>
             <div class="card">
                 <div class="card-body">
@@ -81,10 +81,10 @@
             </div>
         </div>
 
-        <!-- Sixth Card -->
+        <!-- Sixth Card: Writable Business Cards -->
         <div class="col-md-4 mb-4">
             <a href="{{ url('/business-cards/enviro-uncoated-13pt') }}">
-                <img src="{{ asset('images/business_cards/enviro_bc/enviro-business-cards.png') }}" class="card-img-top" alt="Writable Business Card">
+                <img src="{{ asset('images/business_cards/enviro-business-cards.png') }}" class="card-img-top" alt="Writable Business Card">
             </a>
             <div class="card">
                 <div class="card-body">
@@ -99,29 +99,56 @@
             </div>
         </div>
 
-        <!-- Seventh Card -->
-        <div class="col-md-4 mb-4">
-            <a href="{{ url('/business-cards/metallic-foil') }}">
-                <img src="{{ asset('images/business_cards/Metalic foil/foil-magnified.jpg') }}" class="card-img-top" alt="14pt Specialty Business Card">
+       <!-- Seventh Card: Specialty Business Cards -->
+<div class="col-md-4 mb-4">
+    <a href="{{ url('/business-cards/metallic-foil') }}">
+        <img src="{{ asset('images/business_cards/bc_foil-magnified.jpg') }}" class="card-img-top" alt="Metallic Foil Business Card">
+    </a>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Specialty Business Cards</h5>
+            <p class="card-text">Our Specialty Business Cards offer unique finishes and premium quality for standout designs.</p>
+            
+            <a href="{{ url('/business-cards/metallic-foil') }}" class="btn btn-primary">Metallic Foil</a><br>
+            <a href="{{ url('/business-cards/kraft-paper') }}">
+                <img src="{{ asset('images/business_cards/kraft-magnified.png') }}" class="card-img-top mt-3" alt="Kraft Paper Business Card">
             </a>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Specialty Business Cards</h5>
-                    <p class="card-text">Our Linen Business Cards provide a classic, textured finish that feels premium.</p>
-                    <a href="{{ url('/business-cards/metallic-foil') }}" class="btn btn-primary">Metallic Foil</a><br>
-                    <a href="{{ url('/business-cards/kraft-paper') }}" class="btn btn-primary">Kraft Paper</a><br>
-                    <a href="{{ url('/business-cards/durable') }}" class="btn btn-primary">Durable</a><br>
-                    <a href="{{ url('/business-cards/spot-uv') }}" class="btn btn-primary">Spot UV</a><br>
-                    <a href="{{ url('/business-cards/pearl-paper') }}" class="btn btn-primary">Pearl Paper</a><br>
-                    <a href="{{ url('/business-cards/die-cut') }}" class="btn btn-primary">Die Cut</a><br>
-                    <a href="{{ url('/business-cards/soft-touch') }}" class="btn btn-primary">Soft Touch</a><br>
-                    <a href="{{ url('/business-cards/painted-edge-32pt') }}" class="btn btn-primary">32pt Painted Edge</a><br>
-                    <a href="{{ url('/business-cards/ultra-smooth') }}" class="btn btn-primary">Ultra Smooth</a>
-                </div>
-            </div>
-        </div>
+            <a href="{{ url('/business-cards/kraft-paper') }}" class="btn btn-primary">Kraft Paper</a><br>
+            
+            <a href="{{ url('/business-cards/durable') }}">
+                <img src="{{ asset('images/business_cards/durable1.jpg') }}" class="card-img-top mt-3" alt="Durable Business Card">
+            </a>
+            <a href="{{ url('/business-cards/durable') }}" class="btn btn-primary">Durable</a><br>
 
-        <!-- Add more cards as needed -->
+            <a href="{{ url('/business-cards/spot-uv') }}">
+                <img src="{{ asset('images/business_cards/spot-uv-business-cards.png') }}" class="card-img-top mt-3" alt="Spot UV Business Card">
+            </a>
+            <a href="{{ url('/business-cards/spot-uv') }}" class="btn btn-primary">Spot UV</a><br>
+
+            <a href="{{ url('/business-cards/pearl-paper') }}">
+                <img src="{{ asset('images/business_cards/pearl-magnified.png') }}" class="card-img-top mt-3" alt="Pearl Paper Business Card">
+            </a>
+            <a href="{{ url('/business-cards/pearl-paper') }}" class="btn btn-primary">Pearl Paper</a><br>
+
+            <a href="{{ url('/business-cards/die-cut') }}">
+                <img src="{{ asset('images/business_cards/Die-Cut-Cards.png') }}" class="card-img-top mt-3" alt="Die Cut Business Card">
+            </a>
+            <a href="{{ url('/business-cards/die-cut') }}" class="btn btn-primary">Die Cut</a><br>
+
+            <a href="{{ url('/business-cards/soft-touch') }}">
+                <img src="{{ asset('images/business_cards/bc-premium-feel.jpg') }}" class="card-img-top mt-3" alt="Soft Touch Business Card">
+            </a>
+            <a href="{{ url('/business-cards/soft-touch') }}" class="btn btn-primary">Soft Touch</a><br>
+
+            <a href="{{ url('/business-cards/painted-edge-32pt') }}">
+                <img src="{{ asset('images/business_cards/painted-bc-main.png') }}" class="card-img-top mt-3" alt="Painted Edge 32pt Business Card">
+            </a>
+            <a href="{{ url('/business-cards/painted-edge-32pt') }}" class="btn btn-primary">32pt Painted Edge</a><br>
+
+            <a href="{{ url('/business-cards/ultra-smooth') }}">
+                <img src="{{ asset('images/business_cards/bc-premium-feel.jpg') }}" class="card-img-top mt-3" alt="Ultra Smooth Business Card">
+            </a>
+            <a href="{{ url('/business-cards/ultra-smooth') }}" class="btn btn-primary">Ultra Smooth</a>
+        </div>
     </div>
 </div>
-@endsection

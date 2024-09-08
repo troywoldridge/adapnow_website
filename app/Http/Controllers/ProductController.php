@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Services\SinaliteService;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Routing\Controller as BaseController;
 
-class ProductController extends BaseController
-
+class ProductController extends Controller
 {
     protected $sinaliteService;
 
@@ -18,7 +17,7 @@ class ProductController extends BaseController
         $this->sinaliteService = $sinaliteService;
     }
 
-    public function index(Request $request): View
+    public function index(): View
     {
         try {
             $products = $this->sinaliteService->getProducts();
@@ -27,6 +26,18 @@ class ProductController extends BaseController
             Log::error('Failed to retrieve products: ' . $e->getMessage());
             return view('products.index', ['products' => []])
                 ->with('error', 'Failed to load products.');
+        }
+    }
+
+    public function show($id): View
+    {
+        try {
+            $product = Product::findOrFail($id);
+            return view('products.show', ['product' => $product]);
+        } catch (\Exception $e) {
+            Log::error('Failed to load product details: ' . $e->getMessage());
+            return view('products.show', ['product' => null])
+                ->with('error', 'Failed to load product details.');
         }
     }
 }

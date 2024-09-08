@@ -16,6 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique(); // Slug field
             $table->string('description')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
@@ -35,4 +36,3 @@ class CreateCategoriesTable extends Migration
         Schema::dropIfExists('categories');
     }
 }
-

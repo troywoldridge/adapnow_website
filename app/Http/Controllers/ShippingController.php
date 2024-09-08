@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use App\Services\SinaliteService;
@@ -18,6 +17,7 @@ class ShippingController extends BaseController
         $this->sinaliteService = $sinaliteService;
     }
 
+    // Handle the API call to get shipping estimate
     public function getShippingEstimate(Request $request): JsonResponse
     {
         $validated = $request->validate([
@@ -61,3 +61,4 @@ class ShippingController extends BaseController
         }
     }
 }
+

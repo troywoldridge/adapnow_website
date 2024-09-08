@@ -1,105 +1,121 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container mt-5">
-    <!-- Hero Section -->
-    <div class="hero-section text-center">
-        <div class="hero-banner position-relative">
-            <img src="{{ asset('images/hero-banner.jpg') }}" class="img-fluid" alt="Welcome to American Design and Printing">
-            <div class="overlay"></div> <!-- Gradient overlay -->
-            <div class="hero-text">
-                <h1 class="display-4">Your One-Stop Shop for Printing Solutions</h1>
-                <p class="lead">High-quality products, fast turnaround times, and competitive pricing!</p>
-                <a href="{{ route('catalog.index') }}" class="btn btn-primary btn-lg mt-3 shadow-lg">Shop Now</a>
+<div class="container">
+    <h1>TEST MESSAGE: Home Page</h1>
+    <h1 class="my-4 text-center">Our Product Catalog</h1>
+    
+    <!-- Category Buttons (Dropdowns for each category) -->
+    <div class="row text-center mb-4">
+        <!-- Business Cards Dropdown -->
+        <div class="col">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="businessCardsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Business Cards
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="businessCardsDropdown">
+                    <li><h6 class="dropdown-header">Standard</h6></li>
+                    <li><a class="dropdown-item" href="{{ url('/business-cards/quick-ship') }}">Quick Ship Business Cards</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/business-cards/14pt-profit-maximizer') }}">14pt (Profit Maximizer)</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/business-cards/14pt-matte-finish') }}">14pt + Matte Finish</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/business-cards/16pt-matte-finish') }}">16pt + Matte Finish</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/business-cards/14pt-uv') }}">14pt + UV (High Gloss)</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/business-cards/16pt-uv') }}">16pt + UV (High Gloss)</a></li>
+                    <li><h6 class="dropdown-header">Specialty</h6></li>
+                    <li><a class="dropdown-item" href="{{ url('/business-cards/metallic-foil') }}">Metallic Foil (Raised)</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/business-cards/kraft-paper') }}">Kraft Paper</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/business-cards/durable') }}">Durable</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/business-cards/spot-uv') }}">Spot UV (Raised)</a></li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    <!-- Categories Section -->
-    <div class="categories-section mt-5">
-        <h2 class="text-center">Explore Our Categories</h2>
-        <div class="row text-center mt-4">
-            <!-- Category: Apparel -->
-            <div class="col-md-4 mb-4">
-                <div class="card category-card shadow-sm">
-                    <div class="card-body">
-                        <i class="fas fa-tshirt fa-3x mb-3"></i>
-                        <h5 class="card-title">Apparel</h5>
-                        <p class="card-text">Browse our collection of custom apparel for men, women, and kids.</p>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="apparelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                Browse Apparel
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="apparelDropdown">
-                                <li><a class="dropdown-item" href="{{ route('category.show', 'mens-clothing') }}">Men's Clothing</a></li>
-                                <li><a class="dropdown-item" href="{{ route('category.show', 'womens-clothing') }}">Women's Clothing</a></li>
-                                <li><a class="dropdown-item" href="{{ route('category.show', 'kids-youth-clothing') }}">Kids & Youth</a></li>
-                                <li><a class="dropdown-item" href="{{ route('category.show', 'headwear') }}">Headwear</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Category: Business Cards -->
-            <div class="col-md-4 mb-4">
-                <div class="card category-card shadow-sm">
-                    <div class="card-body">
-                        <i class="fas fa-id-card fa-3x mb-3"></i>
-                        <h5 class="card-title">Business Cards</h5>
-                        <p class="card-text">High-quality business cards to make a lasting impression.</p>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="businessCardsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                Browse Business Cards
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="businessCardsDropdown">
-                                <li><a class="dropdown-item" href="{{ route('category.show', '14pt-matt') }}">14pt Matt Business Cards</a></li>
-                                <li><a class="dropdown-item" href="{{ route('category.show', 'value-business-cards') }}">Value Business Cards</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Category: Large Format -->
-            <div class="col-md-4 mb-4">
-                <div class="card category-card shadow-sm">
-                    <div class="card-body">
-                        <i class="fas fa-print fa-3x mb-3"></i>
-                        <h5 class="card-title">Large Format</h5>
-                        <p class="card-text">Large format prints for banners, signs, and more.</p>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="largeFormatDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                Browse Large Format
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="largeFormatDropdown">
-                                <li><a class="dropdown-item" href="{{ route('category.show', 'banners') }}">Banners</a></li>
-                                <li><a class="dropdown-item" href="{{ route('category.show', 'pull-up-banners') }}">Pull Up Banners</a></li>
-                                <li><a class="dropdown-item" href="{{ route('category.show', 'car-magnets') }}">Car Magnets</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <!-- Print Products Dropdown -->
+        <div class="col">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="printProductsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Print Products
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="printProductsDropdown">
+                    <li><h6 class="dropdown-header">Postcards</h6></li>
+                    <li><a class="dropdown-item" href="{{ url('/postcards/10pt-matte') }}">10pt + Matte Finish</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/postcards/14pt-matte') }}">14pt + Matte Finish</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/postcards/16pt-matte') }}">16pt + Matte Finish</a></li>
+                    <li><h6 class="dropdown-header">Flyers</h6></li>
+                    <li><a class="dropdown-item" href="{{ url('/flyers/100lb-gloss-text') }}">100lb Gloss Text</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/flyers/100lb-uv') }}">100lb + UV (High Gloss)</a></li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    <!-- Featured Products Section -->
-    <div class="featured-products-section mt-5">
-        <h2 class="text-center">Featured Products</h2>
-        <div class="row mt-4">
-            @foreach ($featuredProducts as $product)
-                <div class="col-md-3 mb-4">
-                    <div class="card product-card shadow-sm h-100">
-                        <img src="{{ $product->image_url }}" class="card-img-top" alt="{{ $product->name }}">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <p class="card-text text-muted">${{ number_format($product->price, 2) }}</p>
-                            <a href="{{ route('product.show', ['category' => $product->category_slug, 'product' => $product->id]) }}" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+        <!-- Large Format Dropdown -->
+        <div class="col">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="largeFormatDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Large Format
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="largeFormatDropdown">
+                    <li><a class="dropdown-item" href="{{ url('/large-format/coroplast-4mm') }}">4mm Coroplast (Yard Signs)</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/large-format/6mm-coroplast') }}">6mm Coroplast</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/large-format/8mm-coroplast') }}">8mm Coroplast</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Stationary Dropdown -->
+        <div class="col">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="stationaryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Stationary
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="stationaryDropdown">
+                    <li><a class="dropdown-item" href="{{ url('/stationary/letterhead-60lb') }}">60lb Uncoated Letterhead</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/stationary/envelopes-60lb') }}">60lb Uncoated Envelopes</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Promotional Dropdown -->
+        <div class="col">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="promotionalDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Promotional
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="promotionalDropdown">
+                    <li><a class="dropdown-item" href="{{ url('/promotional/mugs-11oz') }}">11oz Ceramic Mug</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/promotional/mugs-15oz') }}">15oz Ceramic Mug</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Labels & Packaging Dropdown -->
+        <div class="col">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="labelsPackagingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Labels & Packaging
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="labelsPackagingDropdown">
+                    <li><a class="dropdown-item" href="{{ url('/labels/bopp-premium') }}">BOPP Labels (Premium)</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/labels/paper-labels') }}">Paper Labels (Most Cost Effective)</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Apparel Dropdown -->
+        <div class="col">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="apparelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Apparel
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="apparelDropdown">
+                    <li><h6 class="dropdown-header">Men's Clothing</h6></li>
+                    <li><a class="dropdown-item" href="{{ url('/apparel/mens-tshirts') }}">T-Shirts</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/apparel/mens-hoodies') }}">Hoodies</a></li>
+                    <li><h6 class="dropdown-header">Women's Clothing</h6></li>
+                    <li><a class="dropdown-item" href="{{ url('/apparel/womens-tshirts') }}">T-Shirts</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/apparel/womens-hoodies') }}">Hoodies</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

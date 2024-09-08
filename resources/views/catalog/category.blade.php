@@ -1,26 +1,39 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
-    <h1>{{ ucfirst($category) }} Products</h1>
-    
-    @if (isset($error))
-        <div class="alert alert-danger">{{ $error }}</div>
-    @else
-        <div class="row">
-            @foreach ($products as $product)
+<div class="container mt-4">
+    <!-- Category Title -->
+    <h1 class="text-center">{{ $category->name }}</h1>
+    <p class="text-center">{{ $category->description ?? 'Explore products in this category' }}</p>
+
+    <!-- Product List -->
+    <div class="row mt-5">
+        @if($products->isEmpty())
+            <div class="col-md-12">
+                <p class="text-center">No products available in this category yet.</p>
+            </div>
+        @else
+            @foreach($products as $product)
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="{{ $product['image'] }}" class="card-img-top" alt="{{ $product['name'] }}">
+                    <div class="card h-100">
+                        <!-- Product Image -->
+                        <img src="{{ asset('images/' . $product->image_path) }}" class="card-img-top" alt="{{ $product->name }}">
+
+                        <!-- Product Details -->
                         <div class="card-body">
-                            <h5 class="card-title">{{ $product['name'] }}</h5>
-                            <p class="card-text">{{ $product['description'] }}</p>
-                            <a href="{{ route('product.show', ['category' => $category, 'product' => $product['id']]) }}" class="btn btn-primary">View Product</a>
+                            <h5 class="card-title">{{ $product->name }}</h5>
+                            <p class="card-text">{{ $product->short_description ?? 'Great product at an amazing price!' }}</p>
+
+                            <!-- Product Price -->
+                            <p class="text-muted">Price: ${{ number_format($product->price, 2) }}</p>
+
+                            <!-- Link to Product Page -->
+                            <a href="{{ route('showProduct', ['category' => $category->slug, 'productSlug' => $product->slug]) }}" class="btn btn-primary">View Product</a>
                         </div>
                     </div>
                 </div>
             @endforeach
-        </div>
-    @endif
+        @endif
+    </div>
 </div>
 @endsection

@@ -2,62 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\SinaliteService;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Routing\Controller as BaseController;
 
-class CatalogController extends BaseController
-
+class CatalogController extends Controller
 {
-    protected $sinaliteService;
-
-    public function __construct(SinaliteService $sinaliteService)
+    public function index()
     {
-        $this->sinaliteService = $sinaliteService;
+        $categories = Category::all();
+        return view('catalog.index', compact('categories'));
     }
 
-    // Catalog homepage, displays categories
-    public function index(): View
+    public function showCategory(Category $category)
     {
-        try {
-            $categories = Category::all();
-            return view('catalog.index', ['categories' => $categories]);
-        } catch (\Exception $e) {
-            Log::error('Failed to load categories: ' . $e->getMessage());
-            return view('catalog.index', ['categories' => []])
-                ->with('error', 'Failed to load categories.');
-        }
+        $products = $category->products;
+        return view('catalog.category', compact('category', 'products'));
     }
 
-    // Show products in a category
-    public function showCategory($category): View
+    public function showProduct(Category $category, $productSlug = null)
     {
-        try {
-            $category = Category::where('slug', $category)->firstOrFail();
-            $products = $this->sinaliteService->getProductsByCategory($category->id);
-            return view('catalog.category', ['category' => $category, 'products' => $products]);
-        } catch (\Exception $e) {
-            Log::error('Failed to load products for category: ' . $e->getMessage());
-            return view('catalog.category', ['category' => $category, 'products' => []])
-                ->with('error', 'Failed to load products for this category.');
+        // Construct the view path based on the category and product slug
+        $viewPath = 'catalog.' . strtolower($category->slug) . '.' . strtolower($productSlug);
+    
+        // Check if the view exists before returning it
+        if (view()->exists($viewPath)) {
+            return view($viewPath, compact('category', 'productSlug'));
         }
-    }
-
-    // Show a specific product
-    public function showProduct($category, $product): View
-    {
-        try {
-            $category = Category::where('slug', $category)->firstOrFail();
-            $product = Product::where('slug', $product)->firstOrFail();
-            return view('catalog.product', ['category' => $category, 'product' => $product]);
-        } catch (\Exception $e) {
-            Log::error('Failed to load product details: ' . $e->getMessage());
-            return view('catalog.product', ['category' => $category, 'product' => null])
-                ->with('error', 'Failed to load product details.');
-        }
+    
+        // If the view doesn't exist, throw a 404 or redirect to an error page
+        return abort(404, 'Product not found');
     }
 }

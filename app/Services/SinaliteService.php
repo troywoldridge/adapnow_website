@@ -92,10 +92,16 @@ class SinaliteService
      * @return array
      */
     public function getProducts()
-    {
-        $url = $this->sandboxBaseUrl . '/product';
-        return $this->makeRequest('get', $url);
-    }
+{
+    $url = $this->sandboxBaseUrl . '/product';
+    $response = $this->makeRequest('get', $url);
+    
+    // Log the entire response for debugging purposes
+    Log::info('Fetched products: ' . json_encode($response));
+
+    return $response;
+}
+
 
     /**
      * Get specific product data by ID.
@@ -137,4 +143,21 @@ class SinaliteService
     }
 
     // Additional methods for placing orders, getting shipping estimates, etc., can be added here.
+
+    /**
+     * Test the connection to SinaLite API and fetch products.
+     * @return array|null
+     */
+    public function testApiConnection()
+    {
+        try {
+            // Fetch the products from SinaLite API
+            $response = $this->getProducts(); // Reuse the existing method
+            return $response; // Return the fetched products
+
+        } catch (\Exception $e) {
+            Log::error('Failed to connect to SinaLite API: ' . $e->getMessage());
+            return null;
+        }
+    }
 }

@@ -3,21 +3,36 @@
 namespace App\Services;
 
 use Exception;
+use Illuminate\Support\Facades\Cache; // For token caching
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class SinaliteService
 {
     protected $accessToken;
-    
-    // Base URLs for Sandbox and Production
-    protected $sandboxBaseUrl = 'https://api.sinaliteuppy.com';
-    protected $liveBaseUrl = 'https://liveapi.sinalite.com';
+    protected $baseUrl;
 
     public function __construct()
     {
-        // Automatically generate a token when the service is initialized
-        $this->accessToken = $this->generateToken();
+        // Select the appropriate environment (sandbox or live)
+        $this->baseUrl = config('app.env') === 'production' 
+            ? 'https://liveapi.sinalite.com' 
+            : 'https://api.sinaliteuppy.com';
+
+        // Fetch access token from cache or generate a new one
+        $this->accessToken = $this->getCachedToken();
+    }
+
+    /**
+     * Get cached token or generate a new one if expired.
+     * 
+     * @return string
+     */
+    protected function getCachedToken()
+    {
+        return Cache::remember('sinalite_token', 3600, function () {
+            return $this->generateToken();
+        });
     }
 
     /**
@@ -29,7 +44,7 @@ class SinaliteService
     public function generateToken()
     {
         try {
-            $response = Http::post($this->sandboxBaseUrl . '/auth/token', [
+            $response = Http::post($this->baseUrl . '/auth/token', [
                 'client_id' => 'JarBGsyG2zC4vRFTjLEi4TDbQrXUVEzr',
                 'client_secret' => 'L292AtithgbZWAuo4UZcQXdG0s7I-TJphyaWCJKA95YpURyZGH1Qh3Ri-YauVdkJ',
                 'audience' => 'https://apiconnect.sinalite.com',
@@ -41,13 +56,11 @@ class SinaliteService
             // Log the full response for inspection
             Log::info("Token API Response: " . json_encode($responseData));
 
-            // Handle missing access token or token type
             if (!isset($responseData['access_token'])) {
                 throw new Exception("Missing access token. Full response: " . json_encode($responseData));
             }
 
-            // Use 'Bearer' as token type if it is not present in the response
-            $tokenType = isset($responseData['token_type']) ? $responseData['token_type'] : 'Bearer';
+            $tokenType = $responseData['token_type'] ?? 'Bearer';
             $token = $tokenType . ' ' . $responseData['access_token'];
 
             return $token;
@@ -68,40 +81,76 @@ class SinaliteService
      */
     protected function makeRequest($method, $url, $data = [])
     {
-        try {
-            $response = Http::withHeaders([
-                'Authorization' => $this->accessToken,
-                'Content-Type' => 'application/json',
-            ])->{$method}($url, $data);
+        $attempts = 0;
+        $maxAttempts = 3; // Number of retry attempts
 
-            if ($response->failed()) {
-                throw new Exception("API request failed: " . $response->body());
+        while ($attempts < $maxAttempts) {
+            try {
+                $response = Http::withHeaders([
+                    'Authorization' => $this->accessToken,
+                    'Content-Type' => 'application/json',
+                ])->{$method}($url, $data);
+
+                if ($response->failed()) {
+                    // If the token is invalid or expired, refresh and retry
+                    if ($response->status() === 401) {
+                        $this->accessToken = $this->generateToken();
+                        Cache::put('sinalite_token', $this->accessToken, 3600);
+                        continue; // Retry with the new token
+                    }
+
+                    throw new Exception("API request failed: " . $response->body());
+                }
+
+                return $response->json();
+            } catch (Exception $e) {
+                $attempts++;
+                Log::warning("Attempt $attempts: Failed to retrieve data: " . $e->getMessage());
+
+                if ($attempts >= $maxAttempts) {
+                    Log::error("Failed to retrieve data after $attempts attempts: " . $e->getMessage());
+                    throw new Exception("Failed to retrieve data after multiple attempts: " . $e->getMessage());
+                }
+
+                sleep(2); // Wait for 2 seconds before retrying
             }
-
-            return $response->json();
-        } catch (Exception $e) {
-            Log::error("Failed to retrieve data: " . $e->getMessage());
-            throw new Exception("Failed to retrieve data: " . $e->getMessage());
         }
     }
 
     /**
-     * Get the list of products.
+     * Get the list of products with pagination.
+     * Automatically handles pagination if the API supports it.
      *
      * @throws Exception
      * @return array
      */
     public function getProducts()
-{
-    $url = $this->sandboxBaseUrl . '/product';
-    $response = $this->makeRequest('get', $url);
-    
-    // Log the entire response for debugging purposes
-    Log::info('Fetched products: ' . json_encode($response));
+    {
+        $url = $this->baseUrl . '/product'; // Update this URL if needed
+        $products = [];
+        $page = 1;
 
-    return $response;
-}
+        try {
+            do {
+                // Fetch paginated data
+                $response = $this->makeRequest('get', $url, ['page' => $page]);
 
+                if (isset($response['data']) && is_array($response['data'])) {
+                    $products = array_merge($products, $response['data']);
+                }
+
+                $page++; // Move to the next page
+                $hasNextPage = isset($response['pagination']['next_page']); // Assuming API provides this
+
+            } while ($hasNextPage); // Loop until no more pages
+
+            Log::info('Fetched all products with pagination.');
+        } catch (\Exception $e) {
+            Log::error('Failed to load paginated products: ' . $e->getMessage());
+        }
+
+        return $products;
+    }
 
     /**
      * Get specific product data by ID.
@@ -112,7 +161,7 @@ class SinaliteService
      */
     public function getProductById($productId, $storeCode = 'en_us')
     {
-        $url = $this->sandboxBaseUrl . "/product/{$productId}/{$storeCode}";
+        $url = $this->baseUrl . "/product/{$productId}/{$storeCode}";
         return $this->makeRequest('get', $url);
     }
 
@@ -124,7 +173,7 @@ class SinaliteService
      */
     public function getStocks()
     {
-        $url = $this->sandboxBaseUrl . '/v1/stocks';  // Update this if incorrect
+        $url = $this->baseUrl . '/v1/stocks';  // Update this if incorrect
         return $this->makeRequest('get', $url);
     }
 
@@ -138,11 +187,9 @@ class SinaliteService
      */
     public function getPricing($productId, $options, $storeCode = 'en_us')
     {
-        $url = $this->sandboxBaseUrl . "/price/{$productId}/{$storeCode}";
+        $url = $this->baseUrl . "/price/{$productId}/{$storeCode}";
         return $this->makeRequest('post', $url, ['productOptions' => $options]);
     }
-
-    // Additional methods for placing orders, getting shipping estimates, etc., can be added here.
 
     /**
      * Test the connection to SinaLite API and fetch products.
@@ -151,10 +198,8 @@ class SinaliteService
     public function testApiConnection()
     {
         try {
-            // Fetch the products from SinaLite API
             $response = $this->getProducts(); // Reuse the existing method
             return $response; // Return the fetched products
-
         } catch (\Exception $e) {
             Log::error('Failed to connect to SinaLite API: ' . $e->getMessage());
             return null;

@@ -1,0 +1,125 @@
+id,sku,name,slug,description,parent_id
+1,businesscard_14pt_profit_maximizer,Business cards 14pt (Profit Maximizer),business-cards-14pt-profit-maximizer,Business cards 14pt (Profit Maximizer),
+2,businesscard_14pt_aq,Business Cards 14pt + AQ ,business-cards-14pt-aq,Business Cards 14pt with AQ,
+3,businesscard_14pt_uv_high_gloss,Business Cards 14pt + UV (High Gloss),business-cards-14pt-uv-high-gloss,Business Cards 14pt with UV High Gloss,
+4,businesscard_14pt_matte_satin_aq,Business cards 14pt + Matte Finish,business-cards-14pt-matte-satin-aq,Business cards 14pt with Matte Finish,
+5,businesscard_16pt_matte_silk_lamination,Business cards 18pt Matte / Silk Lamination,business-cards-18pt-matte-silk-lamination,Business cards 18pt with Matte / Silk Lamination,
+6,businesscard_16pt_gloss_lamination,Business cards 18pt Gloss Lamination,business-cards-18pt-gloss-lamination,Business cards 18pt with Gloss Lamination,
+7,postcards14pt_aq,Postcards 14PT + AQ,postcards-14pt-aq,Postcards 14PT with AQ,2
+8,postcards14pt_uv,Postcards 14PT + UV,postcards-14pt-uv,Postcards 14PT with UV,2
+9,flyers_100lb_gloss,Flyers 100lb Gloss Text,flyers-100lb-gloss,Flyers 100lb Gloss Text,2
+10,flyers_100lb_uv,Flyers 100LB + UV (High Gloss),flyers-100lb-uv,Flyers 100LB with UV (High Gloss),2
+11,postcards_16pt_mattelam,Postcards 18PT Matte / Silk Lamination,postcards-18pt-matte-silk-lamination,Postcards 18PT with Matte / Silk Lamination,2
+12,greetingcards_14pt_aq,Greeting Cards 14pt + AQ,greeting-cards-14pt-aq,Greeting Cards 14pt with AQ,2
+13,premium_pullupbanner,Premium Pull Up Banners 13oz Matte Vinyl,premium-pull-up-banner,Premium Pull Up Banners with 13oz Matte Vinyl,3
+14,styrene_20pt,20pt Styrene,styrene-20pt,20pt Styrene for signage,3
+15,canvasroll,Canvas Roll,canvas-roll,Canvas Roll for printing,3
+16,removable-wall_decals_7_mil,Removable Wall Decals 7 Mil,removable-wall-decals-7-mil,Removable Wall Decals with 7 Mil thickness,4
+17,cut_to_shape_removable_decals,Cut to Shape Removable Decals,cut-to-shape-removable-decals,Cut to Shape Removable Decals for various applications,4
+18,social-distancing-floor-stickers,Social Distancing Floor Stickers,social-distancing-floor-stickers,Social Distancing Floor Stickers,4
+19,greetingcards_14c1s_aq,Greeting Cards 14pt Writable + AQ (C1S),greeting-cards-14c1s-aq,Greeting Cards 14pt Writable with AQ (C1S),2
+20,greetingcards_14ptc1s_uv,Greeting Cards 14pt Writable + UV (C1S),greeting-cards-14ptc1s-uv,Greeting Cards 14pt Writable with UV (C1S),2
+21,greetingcards_13pt_enviro,Greeting Cards 13pt Enviro Uncoated,greeting-cards-13pt-enviro,Greeting Cards 13pt Enviro Uncoated,2
+22,booklets_80lb_85x55,Booklets 80lb Gloss Text (8.5 x 5.5),booklets-80lb-85x55,Booklets 80lb Gloss Text (8.5 x 5.5),2
+23,booklets_80lb_85x11,Booklets 80lb Gloss Text (8.5 x 11),booklets-80lb-85x11,Booklets 80lb Gloss Text (8.5 x 11),2
+24,booklets_100lb_85x55,Booklets 100lb Gloss Text (8.5 x 5.5),booklets-100lb-85x55,Booklets 100lb Gloss Text (8.5 x 5.5),2
+25,booklets_100lb_85x11,Booklets 100lb Gloss Text (8.5 x 11),booklets-100lb-85x11,Booklets 100lb Gloss Text (8.5 x 11),2
+26,presentationfolders_14pt_aq,Presentation Folders 14PT + AQ,presentation-folders-14pt-aq,Presentation Folders 14PT with AQ,2
+27,presentationfolders_14pt_matteaq,Presentation Folders 14PT + Matte Finish,presentation-folders-14pt-matteaq,Presentation Folders 14PT with Matte Finish,2
+28,magnets_14pt,Magnets 14PT,magnets-14pt,Magnets 14PT for advertising,2
+29,calendars_80lb,Wall Calendars 80LB Gloss Text,wall-calendars-80lb,Wall Calendars 80LB Gloss Text for marketing,2
+30,doorhangers_14pt_aq,Door Hangers 14PT + AQ,door-hangers-14pt-aq,Door Hangers 14PT with AQ,2
+31,doorhangers_14pt_uv,Door Hangers 14PT + UV (High Gloss),door-hangers-14pt-uv,Door Hangers 14PT with UV (High Gloss),2
+32,plastic_14pt,Plastic 14PT,plastic-14pt,Plastic 14PT for durable cards,2
+33,letterheads_60lb,Letterheads 60LB Uncoated,letterheads-60lb,Letterheads 60LB for professional correspondence,2
+34,invitation_14pt_aq,Invitations 14pt + AQ,invitation-14pt-aq,Invitations 14pt with AQ,2
+35,invitation_14pt_uv,Invitations 14pt + UV,invitation-14pt-uv,Invitations 14pt with UV,2
+36,invitations_14pt_writable_aq_c1s,Invitations 14pt Writable + AQ (C1S),invitations-14pt-writable-aq-c1s,Invitations 14pt Writable with AQ (C1S),2
+37,posters_100lb_uv,Posters 100LB + UV (High Gloss),posters-100lb-uv,Posters 100LB with UV (High Gloss),2
+38,xframe_13oz_matte,X-Frame Banners 13oz Matte Vinyl,xframe-13oz-matte,X-Frame Banners 13oz Matte Vinyl,3
+39,banners_13oz,Banners 13oz Glossy Vinyl,banners-13oz,Banners 13oz Glossy Vinyl,3
+40,aframe_4mm,A-Frame Signs 4mm Coroplast,aframe-4mm,A-Frame Signs with 4mm Coroplast,3
+id,sku,name,slug,description,parent_id
+41,businesscard_14pt_uv_high_gloss,Business Cards 14pt + UV (High Gloss),business-cards-14pt-uv-high-gloss,Business Cards 14pt with UV (High Gloss),1
+42,businesscard_14pt_matte_satin_aq,Business Cards 14pt + Matte Finish,business-cards-14pt-matte-satin-aq,Business Cards 14pt with Matte Finish,1
+43,businesscard_16pt_matte_silk_lamination,Business Cards 18pt Matte / Silk Lamination,business-cards-16pt-matte-silk-lamination,Business Cards 18pt with Matte / Silk Lamination,1
+44,businesscard_16pt_gloss_lamination,Business Cards 18pt Gloss Lamination,business-cards-16pt-gloss-lamination,Business Cards 18pt with Gloss Lamination,1
+45,businesscard_16pt_aq,Business Cards 16pt + AQ,business-cards-16pt-aq,Business Cards 16pt with AQ,1
+46,businesscard_16pt_uv,Business Cards 16pt + UV,business-cards-16pt-uv,Business Cards 16pt with UV,1
+47,businesscard_16pt_matte_lam_spot_uv,Business Cards 18pt Matte Lam + SPOT UV,business-cards-16pt-matte-lam-spot-uv,Business Cards 18pt Matte Lam with SPOT UV,1
+48,postcards_14pt_writable_aq_c1s,Postcards 14pt Writable + AQ (C1S),postcards-14pt-writable-aq-c1s,Postcards 14pt Writable with AQ (C1S),2
+49,postcards_14pt_writable_uv_c1s,Postcards 14pt Writable + UV (C1S),postcards-14pt-writable-uv-c1s,Postcards 14pt Writable with UV (C1S),2
+50,postcards_16pt_aq,Postcards 16pt + AQ,postcards-16pt-aq,Postcards 16pt with AQ,2
+51,postcards_16pt_uv,Postcards 16pt + UV,postcards-16pt-uv,Postcards 16pt with UV,2
+52,postcards_16pt_matte_finish,Postcards 16pt + Matte Finish,postcards-16pt-matte-finish,Postcards 16pt with Matte Finish,2
+53,postcards_13pt_enviro,Postcards 13pt Enviro Uncoated,postcards-13pt-enviro,Postcards 13pt Enviro Uncoated,2
+54,postcards_13pt_linen,Postcards 13pt Linen Uncoated,postcards-13pt-linen,Postcards 13pt Linen Uncoated,2
+55,flyers_100lb_gloss,Flyers 100lb Gloss Text,flyers-100lb-gloss,Flyers 100lb Gloss Text,2
+56,flyers_100lb_uv,Flyers 100LB + UV (High Gloss),flyers-100lb-uv,Flyers 100LB with UV (High Gloss),2
+57,flyers_100lb_matte_finish,Flyers 100lb + Matte Finish,flyers-100lb-matte-finish,Flyers 100lb with Matte Finish,2
+58,flyers_80lb_enviro,Flyers 80LB Enviro Uncoated,flyers-80lb-enviro,Flyers 80LB Enviro Uncoated,2
+59,flyers_70lb_linen,Flyers 70LB Linen Uncoated,flyers-70lb-linen,Flyers 70LB Linen Uncoated,2
+60,brochures_100lb_gloss,Brochures 100LB Gloss Text,brochures-100lb-gloss,Brochures 100LB Gloss Text,2
+61,brochures_100lb_uv,Brochures 100LB + UV (High Gloss),brochures-100lb-uv,Brochures 100LB with UV (High Gloss),2
+62,brochures_100lb_matte_finish,Brochures 100LB + Matte Finish,brochures-100lb-matte-finish,Brochures 100LB with Matte Finish,2
+63,brochures_80lb_enviro,Brochures 80LB Enviro Uncoated,brochures-80lb-enviro,Brochures 80LB Enviro Uncoated,2
+64,booklets_80lb_85x55,Booklets 80lb Gloss Text (8.5 x 5.5),booklets-80lb-85x55,Booklets 80lb Gloss Text (8.5 x 5.5),2
+65,booklets_80lb_85x11,Booklets 80lb Gloss Text (8.5 x 11),booklets-80lb-85x11,Booklets 80lb Gloss Text (8.5 x 11),2
+66,booklets_100lb_85x55,Booklets 100lb Gloss Text (8.5 x 5.5),booklets-100lb-85x55,Booklets 100lb Gloss Text (8.5 x 5.5),2
+67,booklets_100lb_85x11,Booklets 100lb Gloss Text (8.5 x 11),booklets-100lb-85x11,Booklets 100lb Gloss Text (8.5 x 11),2
+68,presentationfolders_14pt_aq,Presentation Folders 14PT + AQ,presentation-folders-14pt-aq,Presentation Folders 14PT with AQ,2
+69,presentationfolders_14pt_matte_finish,Presentation Folders 14PT + Matte Finish,presentation-folders-14pt-matte-finish,Presentation Folders 14PT with Matte Finish,2
+70,presentationfolders_14pt_uv,Presentation Folders 14PT + UV (High Gloss),presentation-folders-14pt-uv,Presentation Folders 14PT with UV (High Gloss),2
+id,sku,name,slug,description,parent_id
+71,magnets_14pt,Magnets 14PT,magnets-14pt,Magnets 14PT,2
+72,calendars_80lb,Wall Calendars 80LB Gloss Text,wall-calendars-80lb,Wall Calendars 80LB Gloss Text,2
+73,calendars_100lb,Wall Calendars 100LB Gloss Text,wall-calendars-100lb,Wall Calendars 100LB Gloss Text,2
+74,posters_100lb,Posters 100LB Gloss Text,posters-100lb,Posters 100LB Gloss Text,2
+75,posters_100lb_matte_finish,Posters 100LB + Matte Finish,posters-100lb-matte-finish,Posters 100LB with Matte Finish,2
+76,posters_100lb_uv,Posters 100LB + UV (High Gloss),posters-100lb-uv,Posters 100LB with UV (High Gloss),2
+77,posters_80lb_enviro,Posters 80LB Enviro Uncoated,posters-80lb-enviro,Posters 80LB Enviro Uncoated,2
+78,doorhangers_14pt_aq,Door Hangers 14PT + AQ,door-hangers-14pt-aq,Door Hangers 14PT with AQ,2
+79,doorhangers_14pt_uv,Door Hangers 14PT + UV (High Gloss),door-hangers-14pt-uv,Door Hangers 14PT with UV (High Gloss),2
+80,doorhangers_14pt_matte_finish,Door Hangers 14PT + Matte Finish,door-hangers-14pt-matte-finish,Door Hangers 14PT with Matte Finish,2
+81,doorhangers_13pt_enviro,Door Hangers 13PT Enviro Uncoated,door-hangers-13pt-enviro,Door Hangers 13PT Enviro Uncoated,2
+82,plastic_14pt,Plastic 14PT,plastic-14pt,Plastic 14PT,2
+83,clings_transparent,Clings Transparent,clings-transparent,Clings Transparent,2
+84,clings_opaque,Clings Opaque,clings-opaque,Clings Opaque,2
+85,letterheads_60lb,Letterheads 60LB Uncoated,letterheads-60lb,Letterheads 60LB Uncoated,2
+86,envelopes_60lb,Envelopes 60LB Uncoated,envelopes-60lb,Envelopes 60LB Uncoated,2
+87,notepads_60lb_25pg,Notepads 60LB Uncoated (25 pages),notepads-60lb-25pg,Notepads 60LB Uncoated (25 pages),2
+88,notepads_60lb_50pg,Notepads 60LB Uncoated (50 pages),notepads-60lb-50pg,Notepads 60LB Uncoated (50 pages),2
+89,labels_60lb,60lb slit back label / Stickers,labels-60lb,60lb slit back label / Stickers,2
+90,4mm_coroplast,4mm Coroplast (Yard Signs),4mm-coroplast,4mm Coroplast Yard Signs,2
+91,6mm_coroplast,6mm Coroplast,6mm-coroplast,6mm Coroplast Yard Signs,2
+92,8mm_coroplast,8mm Coroplast,8mm-coroplast,8mm Coroplast Yard Signs,2
+93,4mm_foam,4mm Foam Board,4mm-foam,4mm Foam Board,2
+94,banners_13oz,Banners 13oz Glossy Vinyl,banners-13oz,Banners 13oz Glossy Vinyl,2
+95,banner_matte_13oz,Banners 13oz Matte Vinyl,banner-matte-13oz,Banners 13oz Matte Vinyl,2
+96,pullupbanner_13oz,Pull Up Banners 13oz Matte Vinyl Silverbase,pullupbanner-13oz,Pull Up Banners 13oz Matte Vinyl Silverbase,2
+97,carmagnets_30mil,Car Magnets (30mil),carmagnets-30mil,Car Magnets (30mil),2
+98,largeformatposters_8pt,Large Format Posters 8pt C2S,largeformatposters-8pt,Large Format Posters 8pt C2S,2
+99,styrene_20pt,20pt Styrene,styrene-20pt,20pt Styrene,2
+100,displayboard_24pt,Display Board 24PT,displayboard-24pt,Display Board 24PT,2
+101,displayboard_40pt,Display Board 40PT,displayboard-40pt,Display Board 40PT,2
+102,canvasroll,Canvas Roll,canvasroll,Canvas Roll,2
+103,sintra_3mm,3mm Sintra,sintra-3mm,3mm Sintra,2
+104,xframe_13oz_matte,X-Frame Banners 13oz Matte Vinyl,xframe-13oz-matte,X-Frame Banners 13oz Matte Vinyl,2
+105,aframe_4mm,A-Frame Signs 4mm Coroplast,aframe-4mm,A-Frame Signs 4mm Coroplast,2
+106,numberedtickets_14pt,Numbered Tickets 14pt,numberedtickets-14pt,Numbered Tickets 14pt,2
+107,supplyboxes_office,Supply Boxes,supplyboxes-office,Supply Boxes,2
+108,hstand_office,H Stand (for signs),hstand-office,H Stand (for signs),2
+109,aframestands_office,A Frame Stands,aframestands-office,A Frame Stands,2
+110,samplekits_office,Profit Pak (Samples),samplekits-office,Profit Pak (Samples),2
+111,foldedbusinesscards_14pt_uv,UV Folded Business Cards 14pt,foldedbusinesscards-14pt-uv,Folded Business Cards 14pt UV,2
+112,foldedbusinesscards_14pt_matte,Folded Business Cards 14pt Matte Finish,foldedbusinesscards-14pt-matte,Folded Business Cards 14pt Matte Finish,2
+113,foldedbusinesscards_13pt_enviro,Folded Business Cards 13pt Enviro Uncoated,foldedbusinesscards-13pt-enviro,Folded Business Cards 13pt Enviro Uncoated,2
+114,variableprinting_14pt,Variable Printing 14pt,variableprinting-14pt,Variable Printing 14pt,2
+115,tearcards_14pt_uv,Tear Cards 14pt + UV,tearcards-14pt-uv,Tear Cards 14pt UV,2
+116,tearcards_14pt_matte,Tear Cards 14pt + Matte Finish,tearcards-14pt-matte,Tear Cards 14pt Matte Finish,2
+117,tearcards_13pt_enviro,Tear Cards 13pt + Enviro Uncoated,tearcards-13pt-enviro,Tear Cards 13pt Enviro Uncoated,2
+118,digitalsheets_14pt_matte,Digital Sheets 14pt + Matte Finish,digitalsheets-14pt-matte,Digital Sheets 14pt Matte Finish,2
+119,digitalsheets_13pt_enviro,Digital Sheets 13pt Enviro Uncoated,digitalsheets-13pt-enviro,Digital Sheets 13pt Enviro Uncoated,2
+120,digitalsheets_100lb_gloss,Digital Sheets 100lb Gloss Text,digitalsheets-100lb-gloss,Digital Sheets 100lb Gloss Text,2
+121,digitalsheets_100lb_matte,Digital Sheets 100lb + Matte Finish,digitalsheets-100lb-matte,Digital Sheets 100lb Matte Finish,2
+122,digitalsheets_80lb_enviro,Digital Sheets 80lb Enviro Uncoated,digitalsheets-80lb-enviro,Digital Sheets 80lb Enviro Uncoated,2

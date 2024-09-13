@@ -11,9 +11,6 @@ class AddDescriptionToProductCompatibilityTable extends Migration
      */
     public function up(): void
     {
-        Schema::table('product_compatibility', function (Blueprint $table) {
-            $table->string('description')->nullable()->after('compatibility_id');
-        });
     }
 
     /**

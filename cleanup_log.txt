@@ -1,0 +1,197 @@
+Using fallback image for product business-cards-14pt-profit-maximizer
+Using fallback image for product business-cards-14pt-aq
+Using fallback image for product business-cards-14pt-uv-high-gloss
+Using fallback image for product business-cards-14pt-matte-satin-aq
+Using fallback image for product business-cards-18pt-matte-silk-lamination
+Using fallback image for product business-cards-18pt-gloss-lamination
+Using fallback image for product postcards-14pt-aq
+Using fallback image for product postcards-14pt-uv
+Using fallback image for product flyers-100lb-gloss
+Using fallback image for product flyers-100lb-uv
+Using fallback image for product postcards-18pt-matte-silk-lamination
+Using fallback image for product greeting-cards-14pt-aq
+Using fallback image for product premium-pull-up-banner
+Using fallback image for product styrene-20pt
+Using fallback image for product canvas-roll
+Using fallback image for product greeting-cards-14c1s-aq
+Using fallback image for product greeting-cards-14ptc1s-uv
+Using fallback image for product greeting-cards-13pt-enviro
+Using fallback image for product booklets-80lb-85x55
+Using fallback image for product booklets-80lb-85x11
+Using fallback image for product booklets-100lb-85x55
+Using fallback image for product booklets-100lb-85x11
+Using fallback image for product presentation-folders-14pt-aq
+Using fallback image for product presentation-folders-14pt-matteaq
+Using fallback image for product magnets-14pt
+Using fallback image for product wall-calendars-80lb
+Using fallback image for product door-hangers-14pt-aq
+Using fallback image for product door-hangers-14pt-uv
+Using fallback image for product plastic-14pt
+Using fallback image for product letterheads-60lb
+Using fallback image for product invitation-14pt-aq
+Using fallback image for product invitation-14pt-uv
+Using fallback image for product invitations-14pt-writable-aq-c1s
+Using fallback image for product posters-100lb-uv
+Using fallback image for product xframe-13oz-matte
+Using fallback image for product banners-13oz
+Using fallback image for product aframe-4mm
+Using fallback image for product slug
+Using fallback image for product business-cards-14pt-uv-high-gloss-1
+Using fallback image for product business-cards-14pt-matte-satin-aq-1
+Using fallback image for product business-cards-16pt-matte-silk-lamination
+Using fallback image for product business-cards-16pt-gloss-lamination
+Using fallback image for product business-cards-16pt-aq
+Using fallback image for product business-cards-16pt-uv
+Using fallback image for product business-cards-16pt-matte-lam-spot-uv
+Using fallback image for product postcards-14pt-writable-aq-c1s
+Using fallback image for product postcards-14pt-writable-uv-c1s
+Using fallback image for product postcards-16pt-aq
+Using fallback image for product postcards-16pt-uv
+Using fallback image for product postcards-16pt-matte-finish
+Using fallback image for product postcards-13pt-enviro
+Using fallback image for product postcards-13pt-linen
+Using fallback image for product flyers-100lb-gloss-1
+Using fallback image for product flyers-100lb-uv-1
+Using fallback image for product flyers-100lb-matte-finish
+Using fallback image for product flyers-80lb-enviro
+Using fallback image for product flyers-70lb-linen
+Using fallback image for product brochures-100lb-gloss
+Using fallback image for product brochures-100lb-uv
+Using fallback image for product brochures-100lb-matte-finish
+Using fallback image for product brochures-80lb-enviro
+Using fallback image for product booklets-80lb-85x55-1
+Using fallback image for product booklets-80lb-85x11-1
+Using fallback image for product booklets-100lb-85x55-1
+Using fallback image for product booklets-100lb-85x11-1
+Using fallback image for product presentation-folders-14pt-aq-1
+Using fallback image for product presentation-folders-14pt-matte-finish
+Using fallback image for product presentation-folders-14pt-uv
+Using fallback image for product slug-1
+Using fallback image for product magnets-14pt-1
+Using fallback image for product wall-calendars-80lb-1
+Using fallback image for product wall-calendars-100lb
+Using fallback image for product posters-100lb
+Using fallback image for product posters-100lb-matte-finish
+Using fallback image for product posters-100lb-uv-1
+Using fallback image for product posters-80lb-enviro
+Using fallback image for product door-hangers-14pt-aq-1
+Using fallback image for product door-hangers-14pt-uv-1
+Using fallback image for product door-hangers-14pt-matte-finish
+Using fallback image for product door-hangers-13pt-enviro
+Using fallback image for product plastic-14pt-1
+Using fallback image for product clings-transparent
+Using fallback image for product clings-opaque
+Using fallback image for product letterheads-60lb-1
+Using fallback image for product envelopes-60lb
+Using fallback image for product notepads-60lb-25pg
+Using fallback image for product notepads-60lb-50pg
+Using fallback image for product labels-60lb
+Using fallback image for product 4mm-coroplast
+Using fallback image for product 6mm-coroplast
+Using fallback image for product 8mm-coroplast
+Using fallback image for product 4mm-foam
+Using fallback image for product banners-13oz-1
+Using fallback image for product banner-matte-13oz
+Using fallback image for product pullupbanner-13oz
+Using fallback image for product carmagnets-30mil
+Using fallback image for product largeformatposters-8pt
+Using fallback image for product styrene-20pt-1
+Using fallback image for product displayboard-24pt
+Using fallback image for product displayboard-40pt
+Using fallback image for product canvasroll
+Using fallback image for product sintra-3mm
+Using fallback image for product xframe-13oz-matte-1
+Using fallback image for product aframe-4mm-1
+Using fallback image for product numberedtickets-14pt
+Using fallback image for product supplyboxes-office
+Using fallback image for product hstand-office
+Using fallback image for product aframestands-office
+Using fallback image for product samplekits-office
+Using fallback image for product foldedbusinesscards-14pt-uv
+Using fallback image for product foldedbusinesscards-14pt-matte
+Using fallback image for product foldedbusinesscards-13pt-enviro
+Using fallback image for product variableprinting-14pt
+Using fallback image for product tearcards-14pt-uv
+Using fallback image for product tearcards-14pt-matte
+Using fallback image for product tearcards-13pt-enviro
+Using fallback image for product digitalsheets-14pt-matte
+Using fallback image for product digitalsheets-13pt-enviro
+Using fallback image for product digitalsheets-100lb-gloss
+Using fallback image for product digitalsheets-100lb-matte
+Using fallback image for product digitalsheets-80lb-enviro
+Empty Blade files: 
+
+Unused files: 
+/home/troy/adap_now-website/resources/views/products/apparel/index.blade.php
+/home/troy/adap_now-website/resources/views/products/business-cards/business-cards-14pt-matte-satin-aq-1.blade.php
+/home/troy/adap_now-website/resources/views/products/business-cards/business-cards-14pt-uv-high-gloss-1.blade.php
+/home/troy/adap_now-website/resources/views/products/business-cards/business-cards-16pt-aq.blade.php
+/home/troy/adap_now-website/resources/views/products/business-cards/business-cards-16pt-gloss-lamination.blade.php
+/home/troy/adap_now-website/resources/views/products/business-cards/business-cards-16pt-matte-lam-spot-uv.blade.php
+/home/troy/adap_now-website/resources/views/products/business-cards/business-cards-16pt-matte-silk-lamination.blade.php
+/home/troy/adap_now-website/resources/views/products/business-cards/business-cards-16pt-uv.blade.php
+/home/troy/adap_now-website/resources/views/products/business-cards/business-cards.blade.php
+/home/troy/adap_now-website/resources/views/products/business-cards/index.blade.php
+/home/troy/adap_now-website/resources/views/products/large-format/aframe-4mm.blade.php
+/home/troy/adap_now-website/resources/views/products/large-format/banners-13oz.blade.php
+/home/troy/adap_now-website/resources/views/products/large-format/canvas-roll.blade.php
+/home/troy/adap_now-website/resources/views/products/large-format/premium-pull-up-banner.blade.php
+/home/troy/adap_now-website/resources/views/products/large-format/styrene-20pt.blade.php
+/home/troy/adap_now-website/resources/views/products/large-format/xframe-13oz-matte.blade.php
+/home/troy/adap_now-website/resources/views/products/sample-kits/samplekits-office.blade.php
+/home/troy/adap_now-website/resources/views/products/stationary/cut-to-shape-removable-decals.blade.php
+/home/troy/adap_now-website/resources/views/products/stationary/removable-wall-decals-7-mil.blade.php
+/home/troy/adap_now-website/resources/views/products/stationary/social-distancing-floor-stickers.blade.php
+/home/troy/adap_now-website/resources/views/products/uncategorized/business-cards-14pt-aq.blade.php
+/home/troy/adap_now-website/resources/views/products/uncategorized/business-cards-14pt-matte-satin-aq.blade.php
+/home/troy/adap_now-website/resources/views/products/uncategorized/business-cards-14pt-profit-maximizer.blade.php
+/home/troy/adap_now-website/resources/views/products/uncategorized/business-cards-14pt-uv-high-gloss.blade.php
+/home/troy/adap_now-website/resources/views/products/uncategorized/business-cards-18pt-gloss-lamination.blade.php
+/home/troy/adap_now-website/resources/views/products/uncategorized/business-cards-18pt-matte-silk-lamination.blade.php
+/home/troy/adap_now-website/resources/views/products/uncategorized/slug-1.blade.php
+/home/troy/adap_now-website/resources/views/products/uncategorized/slug.blade.php
+/home/troy/adap_now-website/public/images/business_cards/14pt writable.png
+/home/troy/adap_now-website/public/images/business_cards/14pt writable_aq.png
+/home/troy/adap_now-website/public/images/business_cards/16pt_aq.png
+/home/troy/adap_now-website/public/images/business_cards/16pt_matte-business-cards.png
+/home/troy/adap_now-website/public/images/business_cards/18pt_matte_silk.png
+/home/troy/adap_now-website/public/images/business_cards/Die-Cut-Cards-v2.png
+/home/troy/adap_now-website/public/images/business_cards/Die-Cut-Cards.png
+/home/troy/adap_now-website/public/images/business_cards/Die-Cut-Cardsv3.png
+/home/troy/adap_now-website/public/images/business_cards/Die-Cut-Cardsv4.png
+/home/troy/adap_now-website/public/images/business_cards/bc-aq.png
+/home/troy/adap_now-website/public/images/business_cards/bc-best-value (1).png
+/home/troy/adap_now-website/public/images/business_cards/bc-best-value.png
+/home/troy/adap_now-website/public/images/business_cards/bc-gloss-uv-business-cards.png
+/home/troy/adap_now-website/public/images/business_cards/bc-linen-business-cards.png
+/home/troy/adap_now-website/public/images/business_cards/bc_foil2.png
+/home/troy/adap_now-website/public/images/business_cards/bc_raised.png
+/home/troy/adap_now-website/public/images/business_cards/bc_shine.png
+/home/troy/adap_now-website/public/images/business_cards/card-finish.png
+/home/troy/adap_now-website/public/images/business_cards/card-thicknes.png
+/home/troy/adap_now-website/public/images/business_cards/durable-magnified.png
+/home/troy/adap_now-website/public/images/business_cards/enviro-business-cards.png
+/home/troy/adap_now-website/public/images/business_cards/gloss-laminated-business-cards.png
+/home/troy/adap_now-website/public/images/business_cards/kraft-magnified.png
+/home/troy/adap_now-website/public/images/business_cards/matte-business-cards (1).png
+/home/troy/adap_now-website/public/images/business_cards/matte-business-cards.png
+/home/troy/adap_now-website/public/images/business_cards/painted-bc-main.png
+/home/troy/adap_now-website/public/images/business_cards/painted-bc-one.png
+/home/troy/adap_now-website/public/images/business_cards/painted-bc-three.png
+/home/troy/adap_now-website/public/images/business_cards/painted-bc-two.png
+/home/troy/adap_now-website/public/images/business_cards/pearl-dropplet.png
+/home/troy/adap_now-website/public/images/business_cards/pearl-light.png
+/home/troy/adap_now-website/public/images/business_cards/pearl-magnified.png
+/home/troy/adap_now-website/public/images/business_cards/properites-image-two.png
+/home/troy/adap_now-website/public/images/business_cards/recyclable.png
+/home/troy/adap_now-website/public/images/business_cards/spot-uv-business-cards.png
+/home/troy/adap_now-website/public/images/defaults/print-products.png
+/home/troy/adap_now-website/public/images/promotional/labels.png
+/home/troy/adap_now-website/public/images/stationary/mug-image.png
+/home/troy/adap_now-website/public/images/business_cards/Kraft-one.jpg
+/home/troy/adap_now-website/public/images/business_cards/bc_foil-magnified.jpg
+/home/troy/adap_now-website/public/images/business_cards/bc_premium-feel.jpg
+/home/troy/adap_now-website/public/images/business_cards/durable1.jpg
+/home/troy/adap_now-website/public/images/business_cards/joes dogs tumbler.jpg
+/home/troy/adap_now-website/public/images/business_cards/pearl1.jpg
+/home/troy/adap_now-website/public/images/print_products/icon-4mmcoroplast-US.jpg

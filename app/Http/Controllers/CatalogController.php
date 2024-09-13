@@ -17,20 +17,28 @@ class CatalogController extends Controller
     public function showCategory(Category $category)
     {
         $products = $category->products;
+
+        // Log the product data to the log file
+        Log::info('Products for category: ' . $category->name, $products->toArray());
+
         return view('catalog.category', compact('category', 'products'));
     }
 
-    public function showProduct(Category $category, $productSlug = null)
+    /**
+     * Show product details based on category and product slug.
+     */
+    public function showProduct($category, $productSlug)
     {
-        // Construct the view path based on the category and product slug
-        $viewPath = 'catalog.' . strtolower($category->slug) . '.' . strtolower($productSlug);
-    
-        // Check if the view exists before returning it
-        if (view()->exists($viewPath)) {
-            return view($viewPath, compact('category', 'productSlug'));
-        }
-    
-        // If the view doesn't exist, throw a 404 or redirect to an error page
-        return abort(404, 'Product not found');
+        // Find the category by slug
+        $category = Category::where('slug', $category)->firstOrFail();
+
+        // Find the product by slug and ensure it belongs to the correct category
+        $product = Product::where('slug', $productSlug)->where('category_id', $category->id)->firstOrFail();
+
+        // Log product access
+        Log::info('Product viewed: ' . $product->name);
+
+        // Return the view with the product details
+        return view('product.show', compact('product'));
     }
 }

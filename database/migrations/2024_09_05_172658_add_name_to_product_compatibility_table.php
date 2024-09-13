@@ -11,9 +11,7 @@ class AddNameToProductCompatibilityTable extends Migration
      */
     public function up(): void
     {
-        Schema::table('product_compatibility', function (Blueprint $table) {
-            $table->string('name')->nullable()->after('id'); // Add the 'name' column after 'id'
-        });
+        
     }
 
     /**

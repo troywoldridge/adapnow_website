@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;  // Ensure DB is imported
 use Illuminate\Support\Facades\Log;
 use App\Services\SinaliteService;
 

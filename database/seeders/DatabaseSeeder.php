@@ -13,10 +13,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Add the ProductsTableSeeder to the list of seeders
+        // Run all seeders in a single call for better readability and maintenance
         $this->call([
+            CategoriesTableSeeder::class,
             ProductsTableSeeder::class,
-            // Add other seeders here as needed
+            CoatingsTableSeeder::class,
+            GrommetsTableSeeder::class,
+            QuantitiesTableSeeder::class,
+            SetsTableSeeder::class,
+            ProductStockTableSeeder::class,
+            // Add additional seeders as needed below:
+            // VariantsTableSeeder::class,
+            // ProductCoatingTableSeeder::class,
+            // ProductTurnaroundTableSeeder::class,
+            // ProductVariantTableSeeder::class,
+            // ProductSetTableSeeder::class,
+            // ProductGrommetTableSeeder::class,
+            // HStandsTableSeeder::class,
+            // SizesTableSeeder::class,
+            // ProductSizeTableSeeder::class,
+            // ProductCompatibilityTableSeeder::class,
+            // ProductHStandTableSeeder::class,
         ]);
     }
 }

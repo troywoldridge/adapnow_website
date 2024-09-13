@@ -1,0 +1,3 @@
+Used fallback: /home/troy/adap_now-website/public/images/stationary/mug-image.png for product Removable Wall Decals 7 Mil
+Used fallback: /home/troy/adap_now-website/public/images/stationary/mug-image.png for product Cut to Shape Removable Decals
+Used fallback: /home/troy/adap_now-website/public/images/stationary/cut-to-shape-removable-decals.png for product Social Distancing Floor Stickers

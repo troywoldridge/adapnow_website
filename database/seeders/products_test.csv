@@ -1,0 +1,11 @@
+id,sku,name,category,enabled
+1,businesscard_14pt_profit_maximizer,Business cards 14pt (Profit Maximizer),Business Cards,1
+2,businesscard_14pt_aq,Business Cards 14pt + AQ ,Business Cards,1
+7,businesscard_14pt_uv_high_gloss,Business Cards 14pt + UV (High Gloss),Business Cards,1
+8,businesscard_14pt_matte_satin_aq,Business cards 14pt + Matte Finish,Business Cards,1
+9,businesscard_16pt_matte_silk_lamination,Business cards 18pt Matte / Silk Lamination,Business Cards,1
+10,businesscard_16pt_gloss_lamination,Business cards 18pt Gloss Lamination,Business Cards,1
+11,businesscard_14pt_writable _aq_c1s,Business cards 14pt Writable + AQ (C1S),Business Cards,1
+12,businesscard_14pt_writable_uv_c1s,Business cards 14pt Writable + UV (C1S),Business Cards,1
+13,businesscard_13pt_enviro_uncoated,Business cards 13pt Enviro Uncoated,Business Cards,1
+15,businesscard_16pt_aq,Business cards 16pt + AQ,Business Cards,1

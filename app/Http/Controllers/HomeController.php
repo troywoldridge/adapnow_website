@@ -2,34 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Product; // Ensure this model is imported
-use App\Models\Category; // Ensure this model is imported
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
-    // Home Page View
     public function index()
     {
         try {
-            // Fetch the featured products - you may need to adjust this based on your logic
-            $featuredProducts = Product::where('is_featured', true)->take(4)->get();
-
-            // Fetch the categories if needed for additional data in dropdowns
-            $categories = Category::all();
-
+            // Fetch featured products along with their category
+            // Assuming 'is_featured' is a field in the products table
+            $featuredProducts = Product::with('category')
+                ->where('is_featured', true) // Filter by featured products
+                ->take(4) // Limit to 4 products
+                ->get();
+    
+            // Fetch all categories with their subcategories for the navbar or other views
+            $categories = Category::with('subcategories')->get();
+    
             // Pass the fetched data to the view
             return view('home', [
                 'featuredProducts' => $featuredProducts,
-                'categories' => $categories, // Pass if dropdowns require category data
+                'categories' => $categories
             ]);
         } catch (\Exception $e) {
-            // Log the error if something goes wrong
-            \Log::error('Error loading homepage: ' . $e->getMessage());
+            // Log the error message
+            Log::error('Error loading homepage: ' . $e->getMessage());
+    
+            // Return an empty array or custom error message to the view
             return view('home', [
-                'featuredProducts' => [],
-                'categories' => [],
-                'error' => 'Failed to load the homepage.'
+                'featuredProducts' => [], // Empty list if an error occurs
+                'categories' => [], // Empty list if an error occurs
+                'error' => 'Failed to load the homepage. Please try again later.'
             ]);
         }
     }

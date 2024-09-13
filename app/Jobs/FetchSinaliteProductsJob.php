@@ -1,74 +1,56 @@
-<?php
+<?php 
 
 namespace App\Jobs;
 
+use App\Models\Product;
+use App\Services\SinaliteService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class FetchSinaliteProductsJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    // Fetch access token dynamically
-    private function getAccessToken()
+    protected $sinaliteService;
+
+    /**
+     * Create a new job instance.
+     */
+    public function __construct(SinaliteService $sinaliteService)
     {
-        $response = Http::post('https://api.sinaliteuppy.com/auth/token', [
-            'client_id' => 'QF9NlMmXMum7WS8msa9FLytyBlNtAsju',
-            'client_secret' => '3fBrlEaxEADtXFf7pfLXvPKqp3nBx-AkAxr3L02hfvgMkZxfOD2G8Xo9xce4CcPj',
-            'audience' => 'https://apiconnect.sinalite.com',
-            'grant_type' => 'client_credentials'
-        ]);
-
-        if ($response->successful()) {
-            return $response->json()['access_token'];
-        }
-
-        \Log::error('Failed to fetch access token from Sinalite API');
-        return null;
+        $this->sinaliteService = $sinaliteService;
     }
 
-    // Job handler
+    /**
+     * Execute the job.
+     */
     public function handle()
     {
-        $apiToken = $this->getAccessToken();
+        try {
+            // Fetch products from SinaLite API
+            $products = $this->sinaliteService->getProducts();
 
-        if (!$apiToken) {
-            \Log::error('Unable to fetch Sinalite API token, skipping product sync.');
-            return;
-        }
-
-        $response = Http::withToken($apiToken)->get('https://liveapi.sinalite.com/product');
-
-        if ($response->successful()) {
-            $products = $response->json();
-
-            foreach ($products as $product) {
-                DB::table('products')->updateOrInsert(
-                    ['sku' => $product['sku']], // Use SKU or unique identifier to avoid duplicate products
+            // Sync products with the database
+            foreach ($products as $productData) {
+                Product::updateOrCreate(
+                    ['sku' => $productData['sku']], // Unique identifier for product
                     [
-                        'name' => $product['name'],
-                        'description' => $product['description'] ?? null, // Optional description
-                        'price' => $product['price'] ?? 0.0,  // Ensure price is defaulted
-                        'category_id' => $this->getCategoryId($product['category']), // Assuming you map category to an ID
+                        'name' => $productData['name'],
+                        'description' => $productData['description'] ?? null,
+                        'price' => $productData['price'] ?? 0,
+                        'category' => $productData['category'], 
+                        // Add other necessary fields here...
                     ]
                 );
             }
 
-            \Log::info('Products from Sinalite API successfully synced.');
-        } else {
-            \Log::error('Failed to fetch products from Sinalite API: ' . $response->body());
+            Log::info('Successfully synced products with the database.');
+        } catch (\Exception $e) {
+            Log::error('Failed to sync products: ' . $e->getMessage());
         }
-    }
-
-    // Helper method to map category name to category_id in your database
-    private function getCategoryId($categoryName)
-    {
-        // Example: fetch category_id from categories table based on the category name
-        return DB::table('categories')->where('name', $categoryName)->value('id') ?? null;
     }
 }

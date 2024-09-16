@@ -15,7 +15,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $product->name }}</h5>
                             <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
-                            <a href="{{ route('product.show', ['category' => $category->slug, 'productSlug' => $product->slug]) }}" class="btn btn-primary">View Product</a>
+                            <!-- Adjust the route name here -->
+                            <a href="{{ route('catalog.product', ['category_slug' => $category->slug, 'product_slug' => $product->slug]) }}" class="btn btn-primary">View Product</a>
                         </div>
                     </div>
                 </div>

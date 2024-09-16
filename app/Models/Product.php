@@ -43,8 +43,22 @@ class Product extends Model
         return $this->hasMany(ProductPrice::class, 'product_id');
     }
 
-public function getImageAttribute()
+    // Relationship with ProductSet (for managing sets per product)
+    public function sets()
+    {
+        return $this->hasMany(ProductSet::class, 'product_id');
+    }
+
+    // Accessor for Image attribute (with default fallback)
+    public function getImageAttribute()
+    {
+        return $this->attributes['image'] ?? '/images/default-product.png'; // Default image path if not set
+    }
+    // Product.php
+
+public function features()
 {
-    return $this->attributes['image'] ?? '/images/default-product.png'; // Default image path if not set
+    return $this->hasMany(Feature::class);
 }
+
 }

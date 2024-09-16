@@ -2,16 +2,16 @@
 
 @section('content')
 <div class="container my-5">
-    <h1 class="text-center mb-4">20pt Styrene</h1>
+    <h1 class="text-center mb-4">Styrene 20pt</h1>
     
     <!-- Description Section -->
     <div class="row">
         <div class="col-md-6">
-            <img src="/images/large-format/styrene-20pt.png" alt="20pt Styrene" class="img-fluid">
+            <img src="/public/images/large-format/styrene-20pt.png" alt="Styrene 20pt" class="img-fluid">
         </div>
         <div class="col-md-6">
             <h2>Description</h2>
-            <p>20pt Styrene for signage</p>
+            <p>A light weight but durable pvc sheet</p>
             <ul>
                 <li>Feature 1</li>
                 <li>Feature 2</li>
@@ -34,19 +34,19 @@
                 <tbody>
                     <tr>
                         <td>Paper Type</td>
-                        <td>Paper type information not available</td>
+                        <td>N/A</td>
                     </tr>
                     <tr>
                         <td>Size</td>
-                        <td>Size information not available</td>
+                        <td>N/A</td>
                     </tr>
                     <tr>
                         <td>Finishes</td>
-                        <td>Finish information not available</td>
+                        <td>N/A</td>
                     </tr>
                     <tr>
                         <td>Shipping Time</td>
-                        <td>Shipping time information not available</td>
+                        <td>N/A</td>
                     </tr>
                 </tbody>
             </table>
@@ -57,16 +57,17 @@
     <div class="row mt-5">
         <div class="col-md-12">
             <h2>Pricing</h2>
-            <p>Price: 0.00</p>
-            <a href="{{ route('product.show', ['category' => 'large-format', 'productSlug' => 'styrene-20pt']) }}" class="btn btn-primary">Order Now</a>
+            <a href="{{ route('product.show', ['category_slug' => 'large-format', 'product_slug' => 'styrene-20pt']) }}" class="btn btn-primary">Order Now</a> 
         </div>
     </div>
 
     <!-- Back Button -->
     <div class="row mt-5">
         <div class="col-md-12 text-center">
-            <a href="{{ route('catalog.index') }}" class="btn btn-secondary">Back to Catalog</a>
+            <a href="{{ route('category.show', ['category_slug' => 'large-format']) }}" class="btn btn-secondary">Back to large-format</a>
         </div>
     </div>
 </div>
 @endsection
+
+<!-- URL for this product: http://127.0.0.1:8000/product/large-format/styrene-20pt -->

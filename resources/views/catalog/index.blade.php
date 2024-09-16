@@ -5,21 +5,20 @@
 @section('content')
 <div class="container">
     <h1>Product Catalog</h1>
-    <p>Browse through our collection of custom printing products below.</p>
+    <p>Browse through our collection of custom printing categories below.</p>
     
     <div class="row">
-        @foreach($products as $product)
-        <div class="col-md-4">
-            <div class="card">
-                <img src="{{ asset('images/products/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $product->name }}</h5>
-                    <p class="card-text">{{ $product->description }}</p>
-                    <a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="btn btn-primary">View Product</a>
-                </div>
+        @foreach($categories as $category)
+        <div class="col-md-6 col-lg-4 mb-4"> <!-- Adjusted for better responsiveness -->
+            <div class="card h-100">
+                <!-- Display category name -->
+                <a href="{{ route('catalog.category', ['category_slug' => $category->slug]) }}">
+                    <h5 class="card-title">{{ $category->name }}</h5>
+                </a>
             </div>
         </div>
         @endforeach
     </div>
 </div>
 @endsection
+

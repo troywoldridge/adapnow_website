@@ -1,3 +1,5 @@
+<?php
+
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
@@ -12,10 +14,13 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // Register your custom commands here
-        \App\Console\Commands\FetchSinaliteProducts::class,
-        \App\Console\Commands\SyncSinaLiteProducts::class,
+       
+       
         \App\Console\Commands\VerifyProductSlugs::class,
-        \App\Console\Commands\FixProductImages::class,  // FixProductImages should be added here correctly
+        \App\Console\Commands\FixProductImages::class,
+        \App\Console\Commands\ExportProductSlugs::class,  // Register the ExportProductSlugs command here
+        \App\Console\Commands\GenerateBladeFiles::class,
+        
     ];
 
     /**
@@ -27,8 +32,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // Schedule the commands
-        $schedule->command('sinalite:fetch-products')->daily();  // Fetch products daily
-        $schedule->command('sync:sinalite-products')->daily();   // Sync products daily
+        //$schedule->command('sinalite:fetch-products')->daily();  // Fetch products daily
+       // $schedule->command('sync:sinalite-products')->daily();   // Sync products daily
+        //$schedule->job(new FetchSinaliteProductsJob(new \App\Services\SinaliteService))->daily();
     }
 
     /**
@@ -42,21 +48,4 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
-
-    protected function schedule(Schedule $schedule)
-{
-    $schedule->job(new FetchSinaliteProductsJob(new \App\Services\SinaliteService))->daily();
-}
-
-protected $commands = [
-    \App\Console\Commands\FetchSinaliteProductsCommand::class,  // Register the command
-];
-protected $commands = [
-    \App\Console\Commands\GenerateBladeFiles::class,
-];
-protected $commands = [
-    \App\Console\Commands\FinalSyncWithSinalite::class,
-];
-
- 
 }

@@ -3,58 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Services\SinaliteService;
+use App\Models\ProductSet;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Exception;
 
 class ProductController extends Controller
 {
-    protected $sinaliteService;
-
-    public function __construct(SinaliteService $sinaliteService)
-    {
-        $this->sinaliteService = $sinaliteService;
-    }
-
     /**
-     * Sync products from the Sinalite API into the database.
+     * Sync products from the DBeaver database into the application database.
      * Inserts new products and updates existing ones.
      */
     public function syncProducts()
     {
         try {
-            // Fetch products from Sinalite API
-            $products = $this->sinaliteService->getProducts();
+            // Assuming we are fetching products from a local database (e.g., DBeaver-connected SQLite)
+            $products = Product::all();  // Fetch products directly from the database
 
-            foreach ($products as $apiProduct) {
-                // Check if the product exists in the database using the SKU
-                $existingProduct = Product::where('sku', $apiProduct['sku'])->first();
+            foreach ($products as $dbProduct) {
+                // Check if the product exists in the application database using the SKU
+                $existingProduct = Product::where('sku', $dbProduct->sku)->first();
 
                 if ($existingProduct) {
                     // Update the existing product
                     $existingProduct->update([
-                        'name' => $apiProduct['name'],
-                        'price' => $apiProduct['price'] ?? null, // Update price if it exists in the API data
-                        'category' => $apiProduct['category'],  // Ensure your Product model has the relevant fields
-                        'enabled' => $apiProduct['enabled'],
-                        'updated_at' => now(), // Optional: Update the timestamp
+                        'name' => $dbProduct->name,
+                        'price' => $dbProduct->price,
+                        'category' => $dbProduct->category,
+                        'enabled' => $dbProduct->enabled,
+                        'updated_at' => now(),  // Update timestamp
                     ]);
 
                     Log::info('Product updated: ' . $existingProduct->name);
                 } else {
                     // Insert new product
                     Product::create([
-                        'sku' => $apiProduct['sku'],
-                        'name' => $apiProduct['name'],
-                        'price' => $apiProduct['price'] ?? null,
-                        'category' => $apiProduct['category'],
-                        'enabled' => $apiProduct['enabled'],
-                        'created_at' => now(), // Set the timestamp
+                        'sku' => $dbProduct->sku,
+                        'name' => $dbProduct->name,
+                        'price' => $dbProduct->price,
+                        'category' => $dbProduct->category,
+                        'enabled' => $dbProduct->enabled,
+                        'created_at' => now(),  // Set timestamp
                         'updated_at' => now(),
                     ]);
 
-                    Log::info('New product inserted: ' . $apiProduct['name']);
+                    Log::info('New product inserted: ' . $dbProduct->name);
                 }
             }
 
@@ -70,32 +63,41 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the product based on the slug.
+     * Display the product based on category_slug and product_slug.
+     * Also shows set choices (1-20) if available.
      */
-    public function show($slug)
-    {
-        Log::info('Trying to find product with slug: ' . $slug);
-
-        // Find the product by its slug
-        $product = Product::where('slug', $slug)->first();
-
-        if (!$product) {
-            Log::error('Product not found: ' . $slug);
-            abort(404);
-        }
-
-        Log::info('Product found: ' . $product->name);
-
-        return view('product.show', compact('product'));
-        
-    }
+    
 
     /**
      * Display all products.
      */
     public function index()
     {
-        $products = Product::all(); // Fetch all products
+        $products = Product::all();  // Fetch all products
         return view('catalog.index', compact('products'));
     }
+
+    public function show($category_slug, $product_slug)
+{
+    Log::info('Trying to find product with slug: ' . $product_slug);
+
+    // Find the product by its slug
+    $product = Product::where('slug', $product_slug)->first();
+
+    if (!$product) {
+        Log::error('Product not found: ' . $product_slug);
+        abort(404);
+    }
+
+    // Fetch the set choices for the product
+    $setChoices = ProductSet::where('product_id', $product->id)->pluck('set_choice');
+
+    Log::info('Product found: ' . $product->name);
+
+    return view('product.show', compact('product', 'setChoices'));
+}
+
+
+   
+
 }

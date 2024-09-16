@@ -1,32 +1,30 @@
 <?php
 
+// Include the Composer autoloader
+require __DIR__ . '/../vendor/autoload.php';
+
+// Bootstrap the Laravel application
+$app = require_once __DIR__ . '/../bootstrap/app.php';
+
+// Initialize the Laravel console kernel to bootstrap the application
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+$kernel->bootstrap();
+
+// Now we can use Laravel's Eloquent models
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Support\Facades\Log;
+
 // Define the base path for Blade templates
-$basePath = __DIR__. '/../resources/views/products';  // Adjust the path as needed
+$basePath = __DIR__ . '/../resources/views/products';  // Adjust the path as needed
 
-// Define the categories and subcategories based on the navbar structure
-$categories = [
-    'business-cards' => [
-        'best-value-business-cards' => [],
-        'matte-business-cards' => ['14pt-matte-finish', '16pt-matte-finish'],
-        'uv-high-gloss-business-cards' => ['14pt-uv', '16pt-uv'],
-        'lamination-business-cards' => ['18pt-gloss-lamination', '18pt-matte-silk-lamination'],
-        'aq-business-cards' => ['14pt-aq', '16pt-aq'],
-        'writable-business-cards' => ['13pt-enviro-uncoated', '13pt-linen-uncoated', '14pt-writable-aq', '18pt-writable'],
-        'specialty-business-cards' => [
-            'metallic-foil', 'kraft-paper', 'durable', 'spot-uv', 'pearl-paper', 'die-cut', 'soft-touch', '32pt-painted-edge', 'ultra-smooth'
-        ],
-    ],
-    'large-format' => [
-        'banners' => ['matte-vinyl-banners', 'glossy-vinyl-banners', 'mesh-vinyl-banners', 'standard-pull-up-banners', 'premium-pull-up-banners', 'x-frame-banners'],
-        'coroplast-signs' => ['4mm-coroplast', '6mm-coroplast', '8mm-coroplast', '10mm-coroplast'],
-        'floor-graphics' => ['custom-floor-graphics', 'social-distancing-floor-graphics'],
-        'table-covers' => ['6ft-table-covers', '8ft-table-covers'],
-        // Other large format products here...
-    ],
-    // Add other categories as needed...
-];
+// Define the base URL for product links
+$baseUrl = 'http://127.0.0.1:8000/product/';  // Update this with your base URL
 
-// Template structure with placeholders for product and category
+// Fetch all categories with subcategories and products
+$categories = Category::with('subcategories.products')->get();
+
+// Blade template structure with placeholders
 $template = <<<EOT
 @extends('layouts.main')
 
@@ -43,9 +41,9 @@ $template = <<<EOT
             <h2>Description</h2>
             <p>{{PRODUCT_DESCRIPTION}}</p>
             <ul>
-                <li>Feature 1</li>
-                <li>Feature 2</li>
-                <li>Feature 3</li>
+                <li>{{FEATURE_1}}</li>
+                <li>{{FEATURE_2}}</li>
+                <li>{{FEATURE_3}}</li>
             </ul>
         </div>
     </div>
@@ -87,34 +85,54 @@ $template = <<<EOT
     <div class="row mt-5">
         <div class="col-md-12">
             <h2>Pricing</h2>
-            <p></p>
-            <a href="{{ route('showProduct', ['category' => '{{CATEGORY}}', 'productSlug' => '{{PRODUCT_SLUG}}']) }}" class="btn btn-primary">Order Now</a> 
+            <a href="{{ route('product.show', ['category_slug' => '{{CATEGORY}}', 'product_slug' => '{{PRODUCT_SLUG}}']) }}" class="btn btn-primary">Order Now</a> 
         </div>
     </div>
 
     <!-- Back Button -->
     <div class="row mt-5">
         <div class="col-md-12 text-center">
-            <a href="{{ route('{{CATEGORY}}.index') }}" class="btn btn-secondary">Back to {{CATEGORY}}</a>
+            <a href="{{ route('category.show', ['category_slug' => '{{CATEGORY}}']) }}" class="btn btn-secondary">Back to {{CATEGORY}}</a>
         </div>
     </div>
 </div>
 @endsection
+
+<!-- URL for this product: {{PRODUCT_URL}} -->
 EOT;
 
-// Function to replace placeholders in the template
-function replacePlaceholders($template, $category, $product) {
-    $productName = ucwords(str_replace('-', ' ', $product));
-    $productSlug = strtolower($product);
+// Fetch product data from the database using the Product model
+function fetchProductData($productSlug) {
+    // Ensure related data like category and subcategory is eagerly loaded
+    return Product::with(['category', 'subcategory'])->where('slug', $productSlug)->first();
+}
 
+// Replace placeholders in the template with actual product data
+function replacePlaceholders($template, $category, $productSlug, $url) {
+    $product = fetchProductData($productSlug);
+
+    if (!$product) {
+        Log::error("Product not found: " . $productSlug);
+        return false;
+    }
+
+    // Replace placeholders with actual product data
     return str_replace(
-        ['{{PRODUCT_NAME}}', '{{CATEGORY}}', '{{PRODUCT_SLUG}}', '{{PRODUCT_DESCRIPTION}}', '{{PRODUCT_PAPER_TYPE}}', '{{PRODUCT_SIZE}}', '{{PRODUCT_FINISH}}', '{{PRODUCT_SHIPPING_TIME}}'],
-        [$productName, $category, $productSlug, 'Product description here...', 'Paper type here...', 'Product size here...', 'Product finish here...', 'Shipping time here...'],
+        [
+            '{{PRODUCT_NAME}}', '{{CATEGORY}}', '{{PRODUCT_SLUG}}', '{{PRODUCT_DESCRIPTION}}', 
+            '{{PRODUCT_PAPER_TYPE}}', '{{PRODUCT_SIZE}}', '{{PRODUCT_FINISH}}', '{{PRODUCT_SHIPPING_TIME}}', 
+            '{{FEATURE_1}}', '{{FEATURE_2}}', '{{FEATURE_3}}', '{{PRODUCT_URL}}'
+        ],
+        [
+            $product->name, $category, $product->slug, $product->description, 
+            $product->paper_type ?? 'N/A', $product->size ?? 'N/A', $product->finish ?? 'N/A', $product->shipping_time ?? 'N/A',
+            'Feature 1', 'Feature 2', 'Feature 3', $url
+        ],
         $template
     );
 }
 
-// Create helper functions
+// Create directory if it doesn't exist
 function createDirectory($path) {
     if (!is_dir($path)) {
         mkdir($path, 0755, true);
@@ -122,6 +140,7 @@ function createDirectory($path) {
     }
 }
 
+// Create or overwrite a Blade file
 function createBladeFile($path, $fileName, $content) {
     $filePath = $path . '/' . $fileName . '.blade.php';
 
@@ -132,29 +151,44 @@ function createBladeFile($path, $fileName, $content) {
     }
 
     // Create the new Blade file with the updated content
-    file_put_contents($filePath, $content);
-    echo "Created Blade file: $filePath\n";
-}
-
-// Loop through categories and create directories and Blade files
-foreach ($categories as $category => $subcategories) {
-    $categoryPath = $basePath . '/' . $category;
-    createDirectory($categoryPath);
-
-    foreach ($subcategories as $subcategory => $products) {
-        if (is_array($products)) {
-            $subcategoryPath = $categoryPath . '/' . $subcategory;
-            createDirectory($subcategoryPath);
-
-            foreach ($products as $product) {
-                $content = replacePlaceholders($template, $category, $product);
-                createBladeFile($subcategoryPath, $product, $content);
-            }
-        } else {
-            $content = replacePlaceholders($template, $category, $subcategory);
-            createBladeFile($categoryPath, $subcategory, $content);
-        }
+    if ($content) {
+        file_put_contents($filePath, $content);
+        echo "Created Blade file: $filePath\n";
+    } else {
+        echo "No content for: $fileName. Skipping file creation.\n";
     }
 }
 
-echo "Blade file creation completed!\n";
+// Loop through categories and create directories and Blade files based on product data
+foreach ($categories as $category) {
+    $categoryPath = $basePath . '/' . $category->slug;  // Use the category slug
+    createDirectory($categoryPath);
+
+    // Loop through subcategories of the current category
+    foreach ($category->subcategories as $subcategory) {
+        $subcategoryPath = $categoryPath . '/' . $subcategory->slug;  // Use the subcategory slug
+        createDirectory($subcategoryPath);
+
+        // Loop through products in the current subcategory
+        foreach ($subcategory->products as $product) {
+            // Create URL for the product
+            $url = "{$baseUrl}{$category->slug}/{$product->slug}";
+            
+            // Generate content for the product's Blade file
+            $content = replacePlaceholders($template, $category->slug, $product->slug, $url);  // Use correct category slug
+            createBladeFile($subcategoryPath, $product->slug, $content);  // Use correct product slug
+        }
+    }
+
+    // If the category itself has products directly associated
+    foreach ($category->products as $product) {
+        // Create URL for the product
+        $url = "{$baseUrl}{$category->slug}/{$product->slug}";
+        
+        // Generate content for the product's Blade file
+        $content = replacePlaceholders($template, $category->slug, $product->slug, $url);  // Use correct category slug
+        createBladeFile($categoryPath, $product->slug, $content);  // Use correct product slug
+    }
+}
+
+echo "Blade file creation with product data and route URLs completed!\n";
